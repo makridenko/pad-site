@@ -4,7 +4,6 @@ import React from 'react';
 /* Style */
 import styled from 'styled-components';
 
-
 /* Styled components */
 const StyledHeader = styled.div`
   text-align: center;
@@ -61,6 +60,7 @@ const SocialMediaLogo = styled.div`
   margin-right: 16px;
   border-radius: 5px;
 `;
+
 
 const Header = () => {
   return (
