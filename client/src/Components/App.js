@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 /* Components */
 import Header from './Header';
 import Main from './Main';
+import NewRelease from './NewRelease';
 
 
 export default class App extends Component {
@@ -11,7 +12,8 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <Main />
+        {/* <Main /> */}
+        <NewRelease />
       </div>
     );
   };
