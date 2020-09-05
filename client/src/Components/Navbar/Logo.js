@@ -23,7 +23,7 @@ const StyledLogo = styled.img`
 const Logo = ({logoSrc}) => {
   return (
       <LogoContainer>
-        <StyledLogo src={logoSrc} />
+        <a href='/'><StyledLogo src={logoSrc} /></a>
       </LogoContainer>
   );
 };

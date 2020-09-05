@@ -36,7 +36,7 @@ const ContentContainer = styled.div`
 
 
 const Main = () => {
-  const [events, setEvents] = useState(false);
+  const [events, setEvents] = useState(true);
   const toggleToEvents = () => setEvents(true);
   const toggleToRelease = () => setEvents(false);
 
