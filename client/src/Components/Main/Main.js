@@ -1,5 +1,5 @@
 /* React components */
-import React from 'react';
+import React, { useState } from 'react';
 
 /* Components */
 import Footer from './Footer'
@@ -36,12 +36,22 @@ const ContentContainer = styled.div`
 
 
 const Main = () => {
+  const [events, setEvents] = useState(false);
+  const toggleToEvents = () => setEvents(true);
+  const toggleToRelease = () => setEvents(false);
+
   return (
     <StyledMain>
       <StyledMainInfo>
         <ContentContainer>
-          <ToggleButtons />
-          <Content />
+          <ToggleButtons
+            events={events}
+            toggleToEvents={toggleToEvents}
+            toggleToRelease={toggleToRelease}
+          />
+          <Content
+            events={events}
+          />
         </ContentContainer>
       </StyledMainInfo>
       <Footer />

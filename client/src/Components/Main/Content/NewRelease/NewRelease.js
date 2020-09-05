@@ -6,6 +6,8 @@ import styled from 'styled-components';
 
 /* Styled components */
 const StyledNewRelease = styled.div`
+  height: 432px;
+  margin-top: 48px;
 `;
 
 

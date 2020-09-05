@@ -35,7 +35,7 @@ const Title = styled.h1`
   font-size: 60px;
   line-height: 100%;
   letter-spacing: -0.05em;
-  color: #FFFFFF;
+  color: ${props => props.enabled ? '#fff' : 'rgba(0,0,0,0)'};
 `;
 
 const ButtonContainer = styled.div`
@@ -47,15 +47,15 @@ const ButtonContainer = styled.div`
 `;
 
 
-const ToggleButtons = () => {
+const ToggleButtons = ({events, toggleToEvents, toggleToRelease}) => {
   return (
     <StyledToggleButtons>
       <TitleContainer>
-        <Title>фото и напитки</Title>
+        <Title enabled={events ? true : false}>фото и напитки</Title>
       </TitleContainer>
       <ButtonContainer>
-        <Button text={'Выступления'} />
-        <Button text={'Новый релиз'} />
+        <Button enabled={events ? true : false} text={'Выступления'} onClick={() => toggleToEvents()}/>
+        <Button enabled={events ? false : true} text={'Новый релиз'} onClick={() => toggleToRelease()}/>
       </ButtonContainer>
     </StyledToggleButtons>
   );

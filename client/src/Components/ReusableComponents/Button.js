@@ -26,10 +26,9 @@ const StyledButton = styled.button`
 `;
 
 
-const Button = ({text, enabled}) => {
-  console.log(enabled);
+const Button = ({text, enabled, onClick}) => {
   return (
-    <StyledButton enabled={enabled}>
+    <StyledButton enabled={enabled} onClick={onClick}>
       {text}
     </StyledButton>
   );

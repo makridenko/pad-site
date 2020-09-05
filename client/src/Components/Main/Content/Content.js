@@ -13,10 +13,10 @@ const StyledContent = styled.div`
 `;
 
 
-const Content = () => {
+const Content = ({events}) => {
   return (
     <StyledContent>
-      <Events />
+      {events ? <Events /> : <NewRelease />}
     </StyledContent>
   );
 };
