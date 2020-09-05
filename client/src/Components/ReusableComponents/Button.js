@@ -16,19 +16,20 @@ const StyledButton = styled.button`
   border: 1px solid #fff;
 
   /* Color */
-  background: rgba(0,0,0,0);
+  background: ${props => props.enabled ? '#fff' : 'rgba(0,0,0,0)'};
 
   /* Text */
   text-align: center;
   font-weight: bold;
   font-size: 16px;
-  color: #fff;
+  color: ${props => props.enabled ? '#000' : '#fff'};
 `;
 
 
-const Button = ({text}) => {
+const Button = ({text, enabled}) => {
+  console.log(enabled);
   return (
-    <StyledButton>
+    <StyledButton enabled={enabled}>
       {text}
     </StyledButton>
   );
