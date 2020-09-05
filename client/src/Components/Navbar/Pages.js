@@ -31,7 +31,7 @@ const Pages = ({pagesList}) => {
   return (
     <PageContainer>
       {pagesList.map((page) =>
-        <PageLink href={page.href}>{page.name}</PageLink>
+        <PageLink href={page.href} key={page.name}>{page.name}</PageLink>
       )}
     </PageContainer>
   );
