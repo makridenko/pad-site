@@ -28,10 +28,10 @@ const StyledNavbar = styled.div`
 
 
 const pagesList = [
-  {href: '#', name: 'Музыка'},
-  {href: '#', name: 'О группе'},
-  {href: '#', name: 'Видео'},
-  {href: '#', name: 'Контакты'},
+  {href: '/music', name: 'Музыка'},
+  {href: '/about', name: 'О группе'},
+  {href: '/video', name: 'Видео'},
+  {href: '/contacts', name: 'Контакты'},
 ];
 
 
