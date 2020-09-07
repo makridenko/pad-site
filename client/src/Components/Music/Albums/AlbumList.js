@@ -11,6 +11,15 @@ const StyledAlbumList = styled.div`
   overflow-y: hidden;
   width: auto;
   padding-bottom: 48px;
+
+  &::-webkit-scrollbar {
+    height: 3px;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #fff;
+  }
 `;
 
 const StyledCoverImage = styled.img`

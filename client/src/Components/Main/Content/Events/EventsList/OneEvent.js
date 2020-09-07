@@ -7,7 +7,7 @@ import styled from 'styled-components';
 /* Styled components */
 const StyledOneEvent = styled.div`
   /* Dimensions */
-  width: 100%;
+  width: 97%;
 
   /* Border */
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -15,6 +15,11 @@ const StyledOneEvent = styled.div`
   /* Position */
   margin: 0;
   display: flex;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+  }
 `;
 
 

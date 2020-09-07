@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const StyledOneSingle = styled.div`
   display: flex;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  width: 99%;
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);

@@ -13,6 +13,16 @@ const StyledSingleList = styled.div`
   max-height: 576px;
   overflow: scroll;
   overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+    background: rgba(0,0,0,0);
+    border-right: 1px solid rgba(255,255,255,0.5);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #fff;
+  }
 `;
 
 

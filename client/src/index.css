@@ -10,9 +10,34 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
+
+  overflow: overlay;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+::-webkit-scrollbar{
+  width: 0px;
+  border-right: 1px solid #fff;
+}
+
+::-webkit-scrollbar-track-piece{
+  background-color: transparent;
+  -webkit-border-radius: 6px;
+}
+/*
+::-webkit-scrollbar {
+  width: 3px;
+  background: #000;
+  border-right: 1px solid rgba(255,255,255,0.5);
+}
+
+::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+} */
