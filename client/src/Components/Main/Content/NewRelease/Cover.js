@@ -16,8 +16,8 @@ const StyledCover = styled.div`
 
 const StyledCoverImage = styled.img`
   /* Dimensions */
-  width: 262px;
-  height: 262px;
+  width: 300px;
+  height: 300px;
 `;
 
 

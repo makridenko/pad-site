@@ -23,6 +23,11 @@ const StyledButton = styled.button`
   font-weight: bold;
   font-size: 16px;
   color: ${props => props.enabled ? '#000' : '#fff'};
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+  }
 `;
 
 

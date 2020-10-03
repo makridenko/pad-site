@@ -1,5 +1,5 @@
 /* React components */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 /* Components */
 import Footer from './Footer'
@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 /* Styled components */
 const StyledMain = styled.div`
+  
 `;
 
 const StyledMainInfo = styled.div`
@@ -35,10 +36,12 @@ const ContentContainer = styled.div`
 `;
 
 
-const Main = () => {
+const Main = ({setBackgroundImageState}) => {
   const [events, setEvents] = useState(true);
   const toggleToEvents = () => setEvents(true);
   const toggleToRelease = () => setEvents(false);
+
+  useEffect(() => setBackgroundImageState(true));
 
   return (
     <StyledMain>
