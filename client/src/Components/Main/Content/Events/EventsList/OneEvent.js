@@ -35,7 +35,9 @@ const StyledDate = styled.div`
 const StyledDateNum = styled.p`
   /* Position */
   padding: 0;
-  margin: 0;
+  margin-left: 24px;
+  margin-top: 0;
+  margin-bottom: 0;
 
   /* Text */
   font-size: 16px;
@@ -46,7 +48,11 @@ const StyledDateNum = styled.p`
 const StyledDateDay = styled.p`
   /* Position */
   padding: 0;
-  margin: 0;
+  margin-left: 24px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+
 
   /* Text */
   font-size: 16px;
