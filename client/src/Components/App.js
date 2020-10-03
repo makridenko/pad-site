@@ -1,8 +1,11 @@
 /* React components */
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 /* Router */
 import { Route, Switch } from 'react-router-dom';
+
+/* Style */
+import styled from 'styled-components';
 
 /* Components */
 import Navbar from './Navbar';
@@ -12,36 +15,50 @@ import About from './About';
 import Videos from './Videos';
 import Contacts from './Contacts';
 
+/* Static */
+import background from './Images/background.png';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <Navbar />
+const StyledApp = styled.div`
+  background-image: ${props => props.backgroundImage ? `url(${props.background})` : 'none'};
+  background-color: ${props => props.backgroundImage ? 'none' : '#1f1f1f'};
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
 
-        <Switch>
-          <Route exact path='/' component={(props) => (
-            <Main />
-          )}/>
 
-          <Route exact path='/music' component={(props) => (
-            <Music />
-          )}/>
+const App = () => {
+  const [backgroundImage, setBackgroundImageState] = useState(true);
+  console.log(backgroundImage);
+  return (
+    <StyledApp backgroundImage={backgroundImage} background={background}>
+      <Navbar/>
 
-          <Route exact path='/about' component={(props) => (
-            <About />
-          )}/>
+      <Switch>
+        <Route exact path='/' component={(props) => (
+          <Main setBackgroundImageState={setBackgroundImageState}/>
+        )}/>
 
-          <Route exact path='/video' component={(props) => (
-            <Videos />
-          )}/>
+        <Route exact path='/music' component={(props) => (
+          <Music setBackgroundImageState={setBackgroundImageState}/>
+        )}/>
 
-          <Route exact path='/contacts' component={(props) => (
-            <Contacts />
-          )}/>
-        </Switch>
+        <Route exact path='/about' component={(props) => (
+          <About setBackgroundImageState={setBackgroundImageState}/>
+        )}/>
 
-      </div>
-    );
-  };
+        <Route exact path='/video' component={(props) => (
+          <Videos setBackgroundImageState={setBackgroundImageState}/>
+        )}/>
+
+        <Route exact path='/contacts' component={(props) => (
+          <Contacts setBackgroundImageState={setBackgroundImageState}/>
+        )}/>
+      </Switch>
+
+    </StyledApp>
+  );
 };
+
+export default App;

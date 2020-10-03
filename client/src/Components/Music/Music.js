@@ -1,5 +1,5 @@
 /* React */
-import React from 'react';
+import React, { useEffect } from 'react';
 
 /* Style */
 import styled from 'styled-components';
@@ -18,7 +18,8 @@ const StyledMusic = styled.div`
 `;
 
 
-const Music = () => {
+const Music = ({setBackgroundImageState}) => {
+  useEffect(() => setBackgroundImageState(false));
   return (
     <StyledMusic>
       <Albums />

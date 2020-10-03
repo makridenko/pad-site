@@ -1,5 +1,5 @@
 /* React */
-import React from 'react';
+import React, {useEffect} from 'react';
 
 /* Style */
 import styled from 'styled-components';
@@ -10,7 +10,8 @@ const StyledContacts = styled.div`
 `;
 
 
-const Contacts = () => {
+const Contacts = ({setBackgroundImageState}) => {
+  useEffect(() => setBackgroundImageState(false));
   return (
     <StyledContacts>
       Contacts.js
