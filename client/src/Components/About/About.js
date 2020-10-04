@@ -10,8 +10,11 @@ const StyledAbout = styled.div`
 `;
 
 
-const About = ({setBackgroundImageState}) => {
-  useEffect(() => setBackgroundImageState(false));
+const About = ({setBackgroundImageState, setPageHref}) => {
+  useEffect(() => {
+    setPageHref('/about');
+    setBackgroundImageState(false);
+  });
   return (
     <StyledAbout>
       About.js
