@@ -31,29 +31,51 @@ const StyledApp = styled.div`
 const App = () => {
   /* State for appearing background image */
   const [backgroundImage, setBackgroundImageState] = useState(true);
+
+  /* State for current page */
+  const [pageHref, setPageHref] = useState('');
+
   return (
     <StyledApp backgroundImage={backgroundImage} background={background}>
-      <Navbar backgroundImage={backgroundImage}/>
+      <Navbar
+        pageHref={pageHref} 
+        backgroundImage={backgroundImage}
+      />
 
       <Switch>
         <Route exact path='/' component={(props) => (
-          <Main setBackgroundImageState={setBackgroundImageState}/>
+          <Main
+            setPageHref={setPageHref}
+            setBackgroundImageState={setBackgroundImageState}
+          />
         )}/>
 
         <Route exact path='/music' component={(props) => (
-          <Music setBackgroundImageState={setBackgroundImageState}/>
+          <Music 
+            setPageHref={setPageHref}
+            setBackgroundImageState={setBackgroundImageState}
+          />
         )}/>
 
         <Route exact path='/about' component={(props) => (
-          <About setBackgroundImageState={setBackgroundImageState}/>
+          <About 
+            setPageHref={setPageHref}
+            setBackgroundImageState={setBackgroundImageState}
+          />
         )}/>
 
         <Route exact path='/video' component={(props) => (
-          <Videos setBackgroundImageState={setBackgroundImageState}/>
+          <Videos
+            setPageHref={setPageHref}
+            setBackgroundImageState={setBackgroundImageState}
+          />
         )}/>
 
         <Route exact path='/contacts' component={(props) => (
-          <Contacts setBackgroundImageState={setBackgroundImageState}/>
+          <Contacts
+            setPageHref={setPageHref}
+            setBackgroundImageState={setBackgroundImageState}
+          />
         )}/>
       </Switch>
 

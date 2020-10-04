@@ -36,12 +36,15 @@ const ContentContainer = styled.div`
 `;
 
 
-const Main = ({setBackgroundImageState}) => {
+const Main = ({setBackgroundImageState, setPageHref}) => {
   const [events, setEvents] = useState(true);
   const toggleToEvents = () => setEvents(true);
   const toggleToRelease = () => setEvents(false);
 
-  useEffect(() => setBackgroundImageState(true));
+  useEffect(() => {
+    setPageHref('/');
+    setBackgroundImageState(true);
+  });
 
   return (
     <StyledMain>

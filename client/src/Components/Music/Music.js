@@ -18,8 +18,11 @@ const StyledMusic = styled.div`
 `;
 
 
-const Music = ({setBackgroundImageState}) => {
-  useEffect(() => setBackgroundImageState(false));
+const Music = ({setBackgroundImageState, setPageHref}) => {
+  useEffect(() => {
+    setPageHref('/music');
+    setBackgroundImageState(false);
+  });
   return (
     <StyledMusic>
       <Albums />

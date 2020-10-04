@@ -10,8 +10,11 @@ const StyledVideos = styled.div`
 `;
 
 
-const Videos = ({setBackgroundImageState}) => {
-  useEffect(() => setBackgroundImageState(false));
+const Videos = ({setBackgroundImageState, setPageHref}) => {
+  useEffect(() => {
+    setPageHref('/video');
+    setBackgroundImageState(false);
+  });
   return (
     <StyledVideos>
       Videos.js

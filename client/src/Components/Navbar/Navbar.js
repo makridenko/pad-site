@@ -39,11 +39,11 @@ const pagesList = [
 ];
 
 
-const Navbar = ({backgroundImage}) => {
+const Navbar = ({backgroundImage, pageHref}) => {
   return (
     <StyledNavbar backgroundImage={backgroundImage}>
       <Logo logoSrc={'./logo.png'} />
-      <Pages pagesList={pagesList} />
+      <Pages pagesList={pagesList} pageHref={pageHref} />
       <SocialMedia />
     </StyledNavbar>
   );
