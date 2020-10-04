@@ -29,11 +29,11 @@ const StyledApp = styled.div`
 
 
 const App = () => {
+  /* State for appearing background image */
   const [backgroundImage, setBackgroundImageState] = useState(true);
-  console.log(backgroundImage);
   return (
     <StyledApp backgroundImage={backgroundImage} background={background}>
-      <Navbar/>
+      <Navbar backgroundImage={backgroundImage}/>
 
       <Switch>
         <Route exact path='/' component={(props) => (
