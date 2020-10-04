@@ -24,6 +24,10 @@ const StyledNavbar = styled.div`
   text-align: center;
   color: white;
   font-size: 30px;
+
+  /* Colors and shadows */
+  background: ${props => props.backgroundImage ? 'none' : '#1f1f1f'};
+  box-shadow: ${props => props.backgroundImage ? 'none' : '0px 2px 4px rgba(0, 0, 0, 0.25)'};
 `;
 
 
@@ -35,11 +39,11 @@ const pagesList = [
 ];
 
 
-const Navbar = () => {
+const Navbar = ({backgroundImage, pageHref}) => {
   return (
-    <StyledNavbar>
+    <StyledNavbar backgroundImage={backgroundImage}>
       <Logo logoSrc={'./logo.png'} />
-      <Pages pagesList={pagesList} />
+      <Pages pagesList={pagesList} pageHref={pageHref} />
       <SocialMedia />
     </StyledNavbar>
   );

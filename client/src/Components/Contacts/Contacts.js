@@ -10,8 +10,11 @@ const StyledContacts = styled.div`
 `;
 
 
-const Contacts = ({setBackgroundImageState}) => {
-  useEffect(() => setBackgroundImageState(false));
+const Contacts = ({setBackgroundImageState, setPageHref}) => {
+  useEffect(() => {
+    setPageHref('/contacts');
+    setBackgroundImageState(false);
+  });
   return (
     <StyledContacts>
       Contacts.js

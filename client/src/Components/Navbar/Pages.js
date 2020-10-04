@@ -12,11 +12,12 @@ const PageContainer = styled.div`
   /* Position */
   display: grid;
   grid-auto-flow: column;
-  padding-top: 20px;
-  padding-bottom: 23px;
 `;
 
 const PageLink = styled.a`
+  width: 65px;
+  /* Positions */
+
   /* Text */
   color: #fff;
   text-decoration: none;
@@ -24,14 +25,32 @@ const PageLink = styled.a`
   font-weight: bold;
   line-height: 150%;
   letter-spacing: -0.05em;
+
+  .p {
+    top: 50%;
+  }
+
+  /* Colors and shadows */
+  border-top: ${props => props.active ? '4px solid #fff' : '4px solid rgba(0,0,0,0)'};
+
+  &:hover {
+    border-top: 4px solid #fff;
+    transition: 0.3s;
+  }
 `;
 
 
-const Pages = ({pagesList}) => {
+const Pages = ({pagesList, pageHref}) => {
   return (
     <PageContainer>
       {pagesList.map((page) =>
-        <PageLink href={page.href} key={page.name}>{page.name}</PageLink>
+        <PageLink 
+          href={page.href} 
+          key={page.name}
+          active={pageHref === page.href ? true : false}
+        >
+          <p>{page.name}</p>
+        </PageLink>
       )}
     </PageContainer>
   );
