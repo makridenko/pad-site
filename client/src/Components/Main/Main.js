@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 
 /* Components */
-import Footer from './Footer'
 import Content from './Content';
 import ToggleButtons from './ToggleButtons';
 
@@ -60,7 +59,6 @@ const Main = ({setBackgroundImageState, setPageHref}) => {
           />
         </ContentContainer>
       </StyledMainInfo>
-      <Footer />
     </StyledMain>
   );
 };
