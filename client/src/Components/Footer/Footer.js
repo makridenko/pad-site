@@ -36,7 +36,7 @@ const InfoContainer = styled.div`
 
 const Footer = ({pageHref}) => {
   return (
-    <StyledFooter main={pageHref === '/' ? true : false}>
+    <StyledFooter main={pageHref === '/' || pageHref === '/contacts' ? true : false}>
       <Line main={pageHref === '/' ? true : false}/>
       <InfoContainer>
         <Copyright text={'2020 Фото и напитки'} />
