@@ -14,6 +14,7 @@ import Music from './Music';
 import About from './About';
 import Videos from './Videos';
 import Contacts from './Contacts';
+import Footer from './Footer';
 
 /* Static */
 import background from './Images/background.png';
@@ -78,7 +79,8 @@ const App = () => {
           />
         )}/>
       </Switch>
-
+      
+      <Footer pageHref={pageHref} />
     </StyledApp>
   );
 };
