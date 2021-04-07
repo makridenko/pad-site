@@ -30,22 +30,32 @@ const FooterContentContainer = styled.div`
         width: 375px;
         margin: 0 16px;
     }
+
+    p {
+        color: #656565;
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 23.8px;
+        letter-spacing: -5%;
+        margin: 0;
+    }
 `;
 
-const FakeCopyright = styled.div`
-    width: 141px;
-    height: 24px;
-    border: 1px solid tomato;
+const CopyrightContainer = styled.div`
     margin-top: 23px;
 `;
 
-const FakeDevelopers = styled.div`
-    width: 141px;
-    height: 24px;
-    border: 1px solid tomato;
+const DevelopersContainer = styled.div`
     margin-top: 23px;
     margin-right: 0;
-    margin-left: auto;
+    margin-left: auto; 
+
+    a {
+        text-decoration: none;
+        color: #656565;
+        border-bottom: 1px solid #656565;
+    }
 `;
 
 
@@ -53,8 +63,12 @@ const Footer = () => {
     return (
         <StyledFooter>
             <FooterContentContainer>
-                <FakeCopyright>Copyright</FakeCopyright>
-                <FakeDevelopers>Developers</FakeDevelopers>
+                <CopyrightContainer>
+                    <p>2021 Фото и напитки</p>
+                </CopyrightContainer>
+                <DevelopersContainer>
+                    <p><a href='#'>Разработка</a> и <a href='#'>дизайн</a></p>
+                </DevelopersContainer>
             </FooterContentContainer>
         </StyledFooter>
     );

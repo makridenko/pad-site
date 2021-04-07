@@ -13,7 +13,6 @@ const LogoContainer = styled.div`
     align-items: center;
 `;
 
-
 const LogoSection = () => (
     <LogoContainer>
         <Logo />

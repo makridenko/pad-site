@@ -4,6 +4,9 @@ import React from 'react';
 /* Styles */
 import styled from 'styled-components';
 
+/* Helpers */
+import { sections } from '../helpers';
+
 /* Styled Components */
 const MenuContainer = styled.div`
     height: 100%;
@@ -15,7 +18,7 @@ const MenuContainer = styled.div`
 const MenuContent = styled.div`
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 69px);
+    grid-template-columns: repeat(5, 70px);
     grid-gap: 50px;
 `;
 
@@ -32,6 +35,12 @@ const MenuButton = styled.a`
     transition: 0.5s;
     text-decoration: none;
 
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -5%;
+
     &:hover {
         border-top: 4px solid #fff;
     }
@@ -39,13 +48,6 @@ const MenuButton = styled.a`
 
 
 const MenuSection = () => {
-    const sections = [
-        {link: '/music', title: 'Музыка'},
-        {link: '/about', title: 'О группе'},
-        {link: '/shop', title: 'Мерч'},
-        {link: '/video', title: 'Видео'},
-        {link: '/contacts', title: 'Контакты'},
-    ];
     return (
         <MenuContainer>
             <MenuContent>

@@ -10,11 +10,10 @@ import { ReactComponent as InstagramLogo } from '../../ui-kit/instagram.svg';
 
 /* Styled Components */
 const SocialContainer = styled.div`
-    margin-right: 0;
-    margin-left: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 64px;
 `;
 
 const SocialGrid = styled.div`

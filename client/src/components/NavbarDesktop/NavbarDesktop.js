@@ -10,7 +10,7 @@ import { device } from '../../ui-kit/css-devices';
 /* Components */
 import LogoSection from './LogoSection';
 import MenuSection from './MenuSection';
-import SocialSection from './SocialSection';
+import SocialSection from '../SocialSection';
 
 /* Styled Components */
 const StyledNavbarDesktop = styled.div`
@@ -18,6 +18,7 @@ const StyledNavbarDesktop = styled.div`
     height: 64px;
     position: sticky;
     top: 0;
+    background: #1F1F1F;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 
     @media ${device.desktop} {
