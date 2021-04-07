@@ -8,6 +8,9 @@ import styled from 'styled-components';
 import Navbar from './containers/Navbar';
 import Footer from './containers/Footer';
 
+/* UI-kit */
+import { device } from './ui-kit/css-devices';
+
 /* Styled components */
 const StyledApp = styled.div`
   background: #1F1F1F;
@@ -17,6 +20,10 @@ const StyledApp = styled.div`
 
 const Content = styled.div`
   width: 100%;
+
+  @media ${device.mobile} {
+    margin-top: 48px;
+  }
 `;
 
 const App = () => {
