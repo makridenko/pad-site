@@ -7,6 +7,7 @@ import styled from 'styled-components';
 /* UI-Kit */
 import { device } from '../../ui-kit/css-devices';
 import { ReactComponent as Burger } from '../../ui-kit/burger.svg';
+import { ReactComponent as Close } from '../../ui-kit/close.svg';
 import { ReactComponent as Logo } from '../../ui-kit/logo-mobile.svg';
 
 /* Components */
@@ -52,14 +53,16 @@ const NavbarContent = styled.div`
 const BurgerContainer = styled.div`
     display: flex;
     align-items: center;
+    margin-left: 0;
+    margin-right: auto;
 `;
 
 const LogoContainer = styled.div`
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
-    justify-content: center;
+    margin-right: 81.57px;
     width: 100%;
-    padding-left: 40px;
 `;
 
 const MenuContainer = styled.div`
@@ -100,7 +103,7 @@ const NavbarMobile = () => {
             <NavbarContentContainer>
                 <NavbarContent>
                     <BurgerContainer onClick={() => setOpenMenu(!openMenu)} >
-                        <Burger />
+                        {openMenu ? <Close /> : <Burger />}
                     </BurgerContainer>
                     <LogoContainer>
                         <Logo />

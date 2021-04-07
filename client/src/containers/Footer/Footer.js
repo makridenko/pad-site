@@ -13,6 +13,9 @@ const StyledFooter = styled.footer`
     height: 71px;
     display: flex;
     justify-content: center;
+    position: fixed;
+    bottom: 0;
+    background: #1F1F1F;
 `;
 
 const FooterContentContainer = styled.div`
