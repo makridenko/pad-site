@@ -8,6 +8,13 @@ body {
   background: #1F1F1F;
 }
 
-::-webkit-scrollbar {
-  display: none;
+::-webkit-scrollbar{
+  width: 0px;
+  border-right: 1px solid #fff;
+}
+
+::-webkit-scrollbar-track-piece{
+  background-color: transparent;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }
