@@ -4,6 +4,9 @@ import React from 'react';
 /* Styles */
 import styled from 'styled-components';
 
+/* Router */
+import { Link } from 'react-router-dom';
+
 /* UI-Kit */
 import { ReactComponent as Logo } from '../../ui-kit/logo.svg';
 
@@ -15,7 +18,7 @@ const LogoContainer = styled.div`
 
 const LogoSection = () => (
     <LogoContainer>
-        <Logo />
+        <Link to='/'><Logo /></Link>
     </LogoContainer>
 );
 

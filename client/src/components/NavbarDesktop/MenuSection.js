@@ -4,6 +4,9 @@ import React from 'react';
 /* Styles */
 import styled from 'styled-components';
 
+/* Router */
+import { Link } from 'react-router-dom';
+
 /* Helpers */
 import { sections } from '../helpers';
 
@@ -26,20 +29,21 @@ const ButtonContainer = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;
-`;
-
-const MenuButton = styled.a`
     border-top: 4px solid rgba(0,0,0,0);
-    padding-top: 16px;
-    color: #fff;
     transition: 0.5s;
-    text-decoration: none;
+    color: #fff;
 
-    font-family: Montserrat;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: -5%;
+    a {
+        padding-top: 16px;
+        color: #fff;
+        text-decoration: none;
+
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: -5%;
+    }
 
     &:hover {
         border-top: 4px solid #fff;
@@ -53,9 +57,7 @@ const MenuSection = () => {
             <MenuContent>
                 {sections.map(section => (
                     <ButtonContainer key={section.link}>
-                        <MenuButton href={section.link}>
-                            {section.title}
-                        </MenuButton>
+                        <Link to={section.link}>{section.title}</Link>
                     </ButtonContainer>
                 ))}
             </MenuContent>

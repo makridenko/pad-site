@@ -4,6 +4,13 @@ import React from 'react';
 /* Styles */
 import styled from 'styled-components';
 
+/* Router */
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
 /* Containers */
 import Navbar from './containers/Navbar';
 import Footer from './containers/Footer';
@@ -43,15 +50,25 @@ const Content = styled.div`
 
 const App = () => {
   return (
-    <StyledApp>
-      <Navbar />
-      <ContentContainer>
-        <Content>
-          <Main />
-        </Content>
-      </ContentContainer>
-      <Footer />
-    </StyledApp>
+    <Router>
+      <StyledApp>
+        <Navbar />
+        <ContentContainer>
+          <Content>
+            <Switch>
+              <Route path='/about'>
+                <div>about.</div>
+              </Route>
+
+              <Route path='/'>
+                <Main />
+              </Route>
+            </Switch>
+          </Content>
+        </ContentContainer>
+        <Footer />
+      </StyledApp>
+    </Router>
   );
 };
 

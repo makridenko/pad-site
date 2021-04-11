@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 /* Styles */
 import styled from 'styled-components';
 
+/* Router */
+import { Link } from 'react-router-dom';
+
 /* UI-Kit */
 import { device } from '../../ui-kit/css-devices';
 import { ReactComponent as Burger } from '../../ui-kit/burger.svg';
@@ -78,20 +81,19 @@ const SectionContainer = styled.div`
     display: flex;
     justify-content: center;
     margin-bottom: 27px;
-    color: #fff;
-`;
 
-const MenuButton = styled.a`
-    color: #fff;
-    text-decoration: none;
-    opacity: ${props => props.openMenu ? '1' : '0'};
-    transition-delay: ${props => props.openMenu ? '0.4s' : '0'};
+    a {
+        color: #fff;
+        text-decoration: none;
+        opacity: ${props => props.openMenu ? '1' : '0'};
+        transition-delay: ${props => props.openMenu ? '0.4s' : '0'};
 
-    font-family: Montserrat;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: -5%;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: -5%;
+    }
 `;
 
 
@@ -107,16 +109,22 @@ const NavbarMobile = () => {
                         {openMenu ? <Close /> : <Burger />}
                     </BurgerContainer>
                     <LogoContainer>
-                        <Logo />
+                        <Link to='/'><Logo /></Link>
                     </LogoContainer>
                     <SocialSection />
                 </NavbarContent>
                 <MenuContainer openMenu={openMenu}>
                     {sections.map(section => (
-                        <SectionContainer key={section.link}>
-                            <MenuButton openMenu={openMenu} href={section.link}>
+                        <SectionContainer 
+                            key={section.link} 
+                            openMenu={openMenu}
+                        >
+                            <Link 
+                                to={section.link}
+                                onClick={() => setOpenMenu(false)}
+                            >
                                 {section.title}
-                            </MenuButton>
+                            </Link>
                         </SectionContainer>
                     ))}
                 </MenuContainer>
