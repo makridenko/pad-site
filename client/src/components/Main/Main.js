@@ -125,7 +125,7 @@ const Main = () => {
                     />
                     <Button 
                         active={isNewRelease ? true : false} 
-                        text={'Последний релиз'}
+                        text={'Актуальное'}
                         onClick={() => setNewRelease(true)}
                     />
                 </ButtonsContainer>
