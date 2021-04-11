@@ -72,7 +72,7 @@ const Footer = () => {
                     <p>2021 Фото и напитки</p>
                 </CopyrightContainer>
                 <DevelopersContainer>
-                    <p><a href='#'>Разработка</a> и <a href='#'>дизайн</a></p>
+                    <p><a href='https://vk.com/makridos'>Разработка</a> и <a href='https://vk.com/id109156712'>дизайн</a></p>
                 </DevelopersContainer>
             </FooterContentContainer>
         </StyledFooter>

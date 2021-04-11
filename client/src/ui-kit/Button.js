@@ -9,12 +9,18 @@ const StyledButton = styled.button`
     width: 193px;
     height: 48px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     background: ${props => props.active ? '#fff': 'rgba(0,0,0,0)'};
     border: 1px solid #fff;
     transition: 0.5s;
     outline: none;
+    cursor: pointer;
+
+    svg {
+        margin-left: 8px;
+    }
 
     p {
         font-family: Montserrat;
@@ -31,8 +37,9 @@ const StyledButton = styled.button`
 `;
 
 
-export const Button = ({text, active}) => (
-    <StyledButton active={active}>
+export const Button = ({text, active, onClick, svg}) => (
+    <StyledButton active={active} onClick={onClick}>
         <p>{text}</p>
+        {svg}
     </StyledButton>
 );

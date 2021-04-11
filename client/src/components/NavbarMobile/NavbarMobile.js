@@ -70,6 +70,7 @@ const MenuContainer = styled.div`
     padding-top: 39px;
     display: flex;
     flex-direction: column;
+    margin-top: ${props => props.openMenu ? '0' : '-100%'};
 `;
 
 const SectionContainer = styled.div`
