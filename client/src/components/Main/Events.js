@@ -12,7 +12,7 @@ import { ReactComponent as PlaceIcon } from '../../ui-kit/subtract.svg';
 /* Styled Components */
 const LineContainer = styled.div`
     @media ${device.desktop} {
-        margin-top: 48px;
+        margin-top: 34px;
     }
 
     @media ${device.mobile} {
