@@ -17,6 +17,7 @@ import Footer from './containers/Footer';
 
 /* Components */
 import Main from './components/Main';
+import About from './components/About';
 
 /* UI-kit */
 import { device } from './ui-kit/css-devices';
@@ -57,7 +58,7 @@ const App = () => {
           <Content>
             <Switch>
               <Route path='/about'>
-                <div>about.</div>
+                <About />
               </Route>
 
               <Route path='/'>
