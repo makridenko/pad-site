@@ -18,6 +18,7 @@ import Footer from './containers/Footer';
 /* Components */
 import Main from './components/Main';
 import About from './components/About';
+import Contacts from './components/Contacts';
 
 /* UI-kit */
 import { device } from './ui-kit/css-devices';
@@ -59,6 +60,10 @@ const App = () => {
             <Switch>
               <Route path='/about'>
                 <About />
+              </Route>
+
+              <Route path='/contacts'>
+                <Contacts />
               </Route>
 
               <Route path='/'>
