@@ -156,6 +156,7 @@ const Members = () => {
                 </MembersListContainer>
                 <PhotoContainer>
                     <img
+                        alt={'фото и напитки'}
                         src={'https://source.unsplash.com/541x288/?music,band'}
                     />
                 </PhotoContainer>
