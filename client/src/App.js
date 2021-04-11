@@ -4,12 +4,21 @@ import React from 'react';
 /* Styles */
 import styled from 'styled-components';
 
+/* Router */
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
 /* Containers */
 import Navbar from './containers/Navbar';
 import Footer from './containers/Footer';
 
 /* Components */
 import Main from './components/Main';
+import About from './components/About';
+import Contacts from './components/Contacts';
 
 /* UI-kit */
 import { device } from './ui-kit/css-devices';
@@ -43,15 +52,29 @@ const Content = styled.div`
 
 const App = () => {
   return (
-    <StyledApp>
-      <Navbar />
-      <ContentContainer>
-        <Content>
-          <Main />
-        </Content>
-      </ContentContainer>
-      <Footer />
-    </StyledApp>
+    <Router>
+      <StyledApp>
+        <Navbar />
+        <ContentContainer>
+          <Content>
+            <Switch>
+              <Route path='/about'>
+                <About />
+              </Route>
+
+              <Route path='/contacts'>
+                <Contacts />
+              </Route>
+
+              <Route path='/'>
+                <Main />
+              </Route>
+            </Switch>
+          </Content>
+        </ContentContainer>
+        <Footer />
+      </StyledApp>
+    </Router>
   );
 };
 
