@@ -17,8 +17,7 @@ const StyledAbout = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 96px;
-    margin-bottom: 96px;
+    margin: 96px 0;
 
     @media ${device.mobile} {
         margin-top: 48px;

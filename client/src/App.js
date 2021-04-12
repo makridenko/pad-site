@@ -19,6 +19,7 @@ import Footer from './containers/Footer';
 import Main from './components/Main';
 import About from './components/About';
 import Contacts from './components/Contacts';
+import Music from './components/Music';
 
 /* UI-kit */
 import { device } from './ui-kit/css-devices';
@@ -58,6 +59,11 @@ const App = () => {
         <ContentContainer>
           <Content>
             <Switch>
+
+              <Route path='/music'>
+                <Music />
+              </Route>
+
               <Route path='/about'>
                 <About />
               </Route>
@@ -69,6 +75,7 @@ const App = () => {
               <Route path='/'>
                 <Main />
               </Route>
+
             </Switch>
           </Content>
         </ContentContainer>
