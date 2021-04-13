@@ -25,7 +25,7 @@ const StyledNavbarMobile = styled.div`
     height: ${props => props.openMenu ? '339px' : '48px'};
     position: fixed;
     top: 0;
-    z-index: 0;
+    z-index: 1;
     background: #1F1F1F;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     transition: 0.5s;
