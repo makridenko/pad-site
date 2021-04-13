@@ -18,6 +18,7 @@ const StyledNavbarDesktop = styled.div`
     height: 64px;
     position: sticky;
     top: 0;
+    z-index: 1;
     background: #1F1F1F;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 
