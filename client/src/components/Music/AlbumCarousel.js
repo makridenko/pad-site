@@ -1,6 +1,9 @@
 /* React */
 import React from 'react';
 
+/* Router */
+import { Link } from 'react-router-dom';
+
 /* Styled */
 import styled from 'styled-components';
 
@@ -117,15 +120,14 @@ const AlbumHoverButton = styled.button`
 
 const AlbumCover = ({src}) => {
     return (
-        <AlbumCoverContainer src={src}>
-            {/* <AlbumCoverImage
-                src={src}
-            /> */}
-            <AlbumHoverButton>
-                <h3>Подробнее</h3>
-                <Arrow />
-            </AlbumHoverButton>
-        </AlbumCoverContainer>
+            <AlbumCoverContainer src={src}>
+        <Link to='/album'>
+                <AlbumHoverButton>
+                    <h3>Подробнее</h3>
+                    <Arrow />
+                </AlbumHoverButton>
+        </Link>
+            </AlbumCoverContainer>
     );
 };
 

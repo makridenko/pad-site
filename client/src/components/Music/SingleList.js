@@ -1,6 +1,9 @@
 /* React */
 import React, { Fragment } from 'react';
 
+/* Router */
+import { Link } from 'react-router-dom';
+
 /* Styles */
 import styled from 'styled-components';
 
@@ -18,6 +21,10 @@ import { device } from '../../ui-kit/css-devices';
 /* Styled Components */
 const StyledSingleList = styled.div`
     width: 100%;
+
+    a {
+        text-decoration: none;
+    }
 
     @media ${device.desktop} {
         height: 576px;
@@ -158,32 +165,34 @@ const OneSingle = ({
     amazonLink,
 }) => {
     return (
-        <StyledOneSingle>
-            <ImageContainer>
-                <img 
-                    alt={title}
-                    src={imgSrc}
-                />
-            </ImageContainer>
-            <TitleContainer>
-                <h3>{title}</h3>
-            </TitleContainer>
-            <DateContainer className='date'>
-                <h3>{date}</h3>
-            </DateContainer>
-            <SocialContainer className='icons'>
-                <a href={vkLink}><VK /></a>
-                <a href={iTunesLink}><ITunes /></a>
-                <a href={spotifyLink}><Spotify /></a>
-                <a href={youtubeLink}><Youtube /></a>
-                <a href={dezeerLink}><Dezeer /></a>
-                <a href={yandexLink}><Yandex /></a>
-                <a href={amazonLink}><Amazon /></a>
-            </SocialContainer>
-            <ArrowContainer>
-                <Arrow />
-            </ArrowContainer>
-        </StyledOneSingle>
+        <Link to='/single'>
+            <StyledOneSingle>
+                <ImageContainer>
+                    <img 
+                        alt={title}
+                        src={imgSrc}
+                    />
+                </ImageContainer>
+                <TitleContainer>
+                    <h3>{title}</h3>
+                </TitleContainer>
+                <DateContainer className='date'>
+                    <h3>{date}</h3>
+                </DateContainer>
+                <SocialContainer className='icons'>
+                    <a href={vkLink}><VK /></a>
+                    <a href={iTunesLink}><ITunes /></a>
+                    <a href={spotifyLink}><Spotify /></a>
+                    <a href={youtubeLink}><Youtube /></a>
+                    <a href={dezeerLink}><Dezeer /></a>
+                    <a href={yandexLink}><Yandex /></a>
+                    <a href={amazonLink}><Amazon /></a>
+                </SocialContainer>
+                <ArrowContainer>
+                    <Arrow />
+                </ArrowContainer>
+            </StyledOneSingle>
+        </Link>
     );
 };
 

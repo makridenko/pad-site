@@ -20,6 +20,8 @@ import Main from './components/Main';
 import About from './components/About';
 import Contacts from './components/Contacts';
 import Music from './components/Music';
+import SinglePage from './components/SinglePage';
+import AlbumPage from './components/AlbumPage';
 
 /* UI-kit */
 import { device } from './ui-kit/css-devices';
@@ -59,6 +61,14 @@ const App = () => {
         <ContentContainer>
           <Content>
             <Switch>
+
+              <Route path='/album'>
+                <AlbumPage />
+              </Route>
+
+              <Route path='/single'>
+                <SinglePage />
+              </Route>
 
               <Route path='/music'>
                 <Music />
