@@ -5,26 +5,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 /* Router */
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 /* Containers */
 import Navbar from './containers/Navbar';
 import Footer from './containers/Footer';
-
-/* Components */
-import Main from './components/Main';
-import About from './components/About';
-import Contacts from './components/Contacts';
-import Music from './components/Music';
-import SinglePage from './components/SinglePage';
-import AlbumPage from './components/AlbumPage';
-
-/* UI-kit */
-import { device } from './ui-kit/css-devices';
+import Content from './containers/Content';
 
 /* Styled components */
 const StyledApp = styled.div`
@@ -32,63 +18,13 @@ const StyledApp = styled.div`
   height: 100%;
 `;
 
-const ContentContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-const Content = styled.div`
-  @media ${device.desktop} {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 120px;
-    display: flex;
-    justify-content: center;
-  }
-
-  @media ${device.mobile} {
-    height: 100%;
-    padding-top: 48px;
-  }
-`;
 
 const App = () => {
   return (
     <Router>
       <StyledApp>
         <Navbar />
-        <ContentContainer>
-          <Content>
-            <Switch>
-
-              <Route path='/album'>
-                <AlbumPage />
-              </Route>
-
-              <Route path='/single'>
-                <SinglePage />
-              </Route>
-
-              <Route path='/music'>
-                <Music />
-              </Route>
-
-              <Route path='/about'>
-                <About />
-              </Route>
-
-              <Route path='/contacts'>
-                <Contacts />
-              </Route>
-
-              <Route path='/'>
-                <Main />
-              </Route>
-
-            </Switch>
-          </Content>
-        </ContentContainer>
+        <Content />
         <Footer />
       </StyledApp>
     </Router>

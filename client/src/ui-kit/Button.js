@@ -23,11 +23,12 @@ const StyledButton = styled.button`
     }
 
     p {
+        margin: 0;
         font-family: Montserrat;
         font-weight: bold;
         font-size: 16px;
         line-height: 24px;
-        letter-spacing: -5%;
+        letter-spacing: -0.05em;
         color: ${props => props.active ? '#000' : '#fff'};
     }
 

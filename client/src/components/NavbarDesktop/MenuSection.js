@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 /* Helpers */
-import { sections } from '../helpers';
+import { sections } from '../../settings/navbar-sections';
 
 /* Styled Components */
 const MenuContainer = styled.div`
