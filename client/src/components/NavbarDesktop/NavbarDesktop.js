@@ -4,8 +4,8 @@ import React from 'react';
 /* Styles */
 import styled from 'styled-components';
 
-/* UI-Kit */
-import { device } from '../../ui-kit/css-devices';
+/* Settings */
+import { device } from '../../settings/css-devices';
 
 /* Components */
 import LogoSection from './LogoSection';

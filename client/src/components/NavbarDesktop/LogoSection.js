@@ -7,8 +7,8 @@ import styled from 'styled-components';
 /* Router */
 import { Link } from 'react-router-dom';
 
-/* UI-Kit */
-import { ReactComponent as Logo } from '../../ui-kit/logo.svg';
+/* Icons */
+import { ReactComponent as Logo } from './icons/logo.svg';
 
 /* Styled Components */
 const LogoContainer = styled.div`

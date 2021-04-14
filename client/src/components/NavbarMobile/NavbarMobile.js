@@ -7,17 +7,19 @@ import styled from 'styled-components';
 /* Router */
 import { Link } from 'react-router-dom';
 
-/* UI-Kit */
-import { device } from '../../ui-kit/css-devices';
-import { ReactComponent as Burger } from '../../ui-kit/burger.svg';
-import { ReactComponent as Close } from '../../ui-kit/close.svg';
-import { ReactComponent as Logo } from '../../ui-kit/logo-mobile.svg';
+/* Settings */
+import { device } from '../../settings/css-devices';
+
+/* Icons */
+import { ReactComponent as Burger } from './icons/burger.svg';
+import { ReactComponent as Close } from './icons/close.svg';
+import { ReactComponent as Logo } from './icons/logo.svg';
 
 /* Components */
 import SocialSection from '../SocialSection';
 
 /* Helpers */
-import { sections } from '../helpers';
+import { sections } from '../../settings/navbar-sections';
 
 /* Styled Components */
 const StyledNavbarMobile = styled.div`

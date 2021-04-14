@@ -4,9 +4,9 @@ import React from 'react';
 /* Styles */
 import styled from 'styled-components';
 
-/* UI-Kit */
-import { ReactComponent as VKLogo } from '../../ui-kit/vk.svg';
-import { ReactComponent as InstagramLogo } from '../../ui-kit/instagram.svg';
+/* Icons */
+import { ReactComponent as VKLogo } from './icons/vk.svg';
+import { ReactComponent as InstagramLogo } from './icons/instagram.svg';
 
 /* Styled Components */
 const SocialContainer = styled.div`
