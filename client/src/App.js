@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 import { useLocation } from 'react-router-dom';
 
 /* Settings */
-import { GlobalStyles, defaultMode, photoMode } from './settings/globalStyles';
+import { GlobalStyles, defaultMode, photoMode } from './settings/global-styles';
 import { device } from './settings/css-devices';
 
 /* Containers */
