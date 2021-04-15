@@ -1,5 +1,5 @@
 /* React */
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 /* Styles */
 import styled from 'styled-components';
@@ -13,6 +13,7 @@ import { useWindowWidth } from './helpers';
 
 /* Settings */
 import { device } from '../../settings/css-devices';
+import { AppContext } from '../../App';
 
 /* Styled Components */
 const StyledMain = styled.div`
@@ -31,8 +32,7 @@ const StyledMain = styled.div`
 
 const Main = () => {
 
-    // Hook for change page content
-    const [isNewRelease, setNewRelease] = useState(false);
+    const { isNewRelease, setNewRelease } = useContext(AppContext);
 
     // Get user screen width
     const { width } = useWindowWidth();

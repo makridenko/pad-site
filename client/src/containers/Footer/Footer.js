@@ -1,5 +1,5 @@
 /* React */
-import React from 'react';
+import React, { useContext } from 'react';
 
 /* Styles */
 import styled from 'styled-components';
@@ -7,24 +7,35 @@ import styled from 'styled-components';
 /* Settings */
 import { device } from '../../settings/css-devices';
 
+/* Context */
+import { AppContext } from '../../App';
+
 /* Styled components */
 const StyledFooter = styled.footer`
     width: 100%;
     height: 71px;
     display: flex;
     justify-content: center;
+    color: ${props => props.withPhoto ? '#fff' : '#656565'};
+    background: ${props => props.withPhoto ? 'rgba(0,0,0,0)' : '#1F1F1F'};
+
+    a {
+        text-decoration: none;
+        color: ${props => props.withPhoto ? '#fff' : '#656565'};
+        border-bottom: 1px solid ${props => props.withPhoto ? '#fff' : '#656565'};
+    }
+
     @media ${device.desktop} {
         position: fixed;
         bottom: 0;
     }
-    background: #1F1F1F;
 `;
 
 const FooterContentContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: row;
-    border-top: 1px solid #fff;
+    border-top: ${props => props.withPhoto ? 'none' : '1px solid #fff'};
 
     @media ${device.desktop} {
         width: 1440px;
@@ -37,7 +48,6 @@ const FooterContentContainer = styled.div`
     }
 
     p {
-        color: #656565;
         font-family: Montserrat;
         font-weight: 400;
         font-size: 14px;
@@ -55,21 +65,18 @@ const DevelopersContainer = styled.div`
     margin-top: 23px;
     margin-right: 0;
     margin-left: auto; 
-
-    a {
-        text-decoration: none;
-        color: #656565;
-        border-bottom: 1px solid #656565;
-    }
 `;
 
 
 const Footer = () => {
+
+    const { withPhoto } = useContext(AppContext);
+
     return (
-        <StyledFooter>
-            <FooterContentContainer>
+        <StyledFooter withPhoto={withPhoto}>
+            <FooterContentContainer withPhoto={withPhoto}>
                 <CopyrightContainer>
-                    <p>2021 Фото и напитки</p>
+                    <p>2021 фото и напитки</p>
                 </CopyrightContainer>
                 <DevelopersContainer>
                     <p><a href='https://vk.com/makridos'>Разработка</a> и <a href='https://vk.com/id109156712'>дизайн</a></p>
