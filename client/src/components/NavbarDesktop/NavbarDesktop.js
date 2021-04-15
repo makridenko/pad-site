@@ -1,5 +1,5 @@
 /* React */
-import React from 'react';
+import React, { useContext } from 'react';
 
 /* Styles */
 import styled from 'styled-components';
@@ -12,6 +12,9 @@ import LogoSection from './LogoSection';
 import MenuSection from './MenuSection';
 import SocialSection from '../SocialSection';
 
+/* Context */
+import { AppContext } from '../../App';
+
 /* Styled Components */
 const StyledNavbarDesktop = styled.div`
     width: 100%;
@@ -19,8 +22,8 @@ const StyledNavbarDesktop = styled.div`
     position: sticky;
     top: 0;
     z-index: 1;
-    background: #1F1F1F;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    background: ${props => props.withPhoto ? 'rgba(0,0,0,0)' : '#1F1F1F'};
+    box-shadow: ${props => props.withPhoto ? 'none' : '0px 2px 4px rgba(0, 0, 0, 0.25)'};
 
     @media ${device.desktop} {
         display: flex;
@@ -47,8 +50,11 @@ const NavbarContent = styled.div`
 
 
 const NavbarDesktop = () => {
+
+    const { withPhoto } = useContext(AppContext);
+
     return (
-        <StyledNavbarDesktop>
+        <StyledNavbarDesktop withPhoto={withPhoto}>
             <NavbarContentContainer>
                 <NavbarContent>
                     <LogoSection />
