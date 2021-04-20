@@ -18,7 +18,7 @@ const StyledSingleList = styled.div`
         text-decoration: none;
     }
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         height: 576px;
         overflow-x: hidden;
 

@@ -26,7 +26,7 @@ const AlbumCoverContainer = styled.div`
     position: relative;
     transition: 0.5s;
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         &:hover {
             background-size: auto 120%;
             button {

@@ -21,7 +21,7 @@ const StyledCarousel = styled.div`
         border-right: 1px solid rgba(0,0,0,0);
     }
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         &::-webkit-scrollbar {
             height: 3px;
             border-bottom: 1px solid rgba(255,255,255,0.5);
