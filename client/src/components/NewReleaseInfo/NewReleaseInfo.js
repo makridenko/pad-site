@@ -66,7 +66,7 @@ const ButtonContainer = styled.div`
     display: flex;
     width: 100%;
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         flex-direction: row-reverse;
         margin-top: 72px;
     }
