@@ -44,7 +44,6 @@ const FooterContentContainer = styled.div`
 
     @media ${device.desktopS} {
         width: 1140px;
-        margin: 0 55px;
     }
 
     @media ${device.mobile} {
