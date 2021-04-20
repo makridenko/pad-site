@@ -39,6 +39,11 @@ const NavbarContentContainer = styled.div`
     height: 100%;
     width: 1440px;
     padding: 0 120px;
+
+    @media ${device.desktopS} {
+        width: 1150px;
+        padding: 0 65px;
+    }
 `;
 
 const NavbarContent = styled.div`
