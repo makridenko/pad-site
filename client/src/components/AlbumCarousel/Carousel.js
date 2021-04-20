@@ -36,6 +36,10 @@ const StyledCarousel = styled.div`
     @media ${device.mobile} {
         width: 100%;
         padding: 24px 0 0 0;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 `;
 

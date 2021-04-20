@@ -32,6 +32,13 @@ const StyledSingleList = styled.div`
             background: #fff;
         }
     }
+
+    @media ${device.mobile} {
+        overflow-x: visible;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
 `;
 
 const FakeLine = styled.div`
