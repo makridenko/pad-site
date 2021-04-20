@@ -49,6 +49,13 @@ const StyledOneSingle = styled.div`
     @media ${device.mobile} {
         height: 75px;
         width: 100%;
+
+        &:hover {
+            background: none;
+            .icon-set {
+                display: none;
+            }
+        }
     }
 `;
 

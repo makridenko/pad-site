@@ -39,6 +39,13 @@ const AlbumCoverContainer = styled.div`
         flex: 0 0 100px;
         height: 100px;
         margin-right: 16px;
+
+        &:hover {
+            background-size: none;
+            button {
+                visibility: hidden;
+            }
+        }
     }
 `;
 
