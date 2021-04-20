@@ -19,7 +19,7 @@ const StyledOneEvent = styled.div`
     flex-direction: row;
     padding: 24px 0;
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         width: 566px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     }

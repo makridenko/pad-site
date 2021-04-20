@@ -32,6 +32,7 @@ const ContentContainer = styled.div`
 
     @media ${device.desktopS} {
         max-width: 1280px;
+        padding: 90px 70px 0px 70px;
     }
 
     @media ${device.mobile} {
