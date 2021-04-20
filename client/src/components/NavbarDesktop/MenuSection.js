@@ -10,9 +10,6 @@ import { Link } from 'react-router-dom';
 /* Helpers */
 import { sections } from '../../settings/navbar-sections';
 
-/* Settings */
-import { device } from '../../settings/css-devices';
-
 /* Styled Components */
 const MenuContainer = styled.div`
     height: 100%;
