@@ -17,7 +17,7 @@ import { AppContext } from '../../App';
 
 /* Styled Components */
 const StyledMain = styled.div`
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         display: flex;
         flex-direction: row;
     }
@@ -38,7 +38,7 @@ const Main = () => {
     const { width } = useWindowWidth();
     
     // For toggle component MainDesktop and MainMobile
-    const mobileScreen = width < 1440;
+    const mobileScreen = width < 1280;
 
     return (
         <StyledMain>

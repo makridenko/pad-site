@@ -29,7 +29,7 @@ const StyledOneSingle = styled.div`
         display: none;
     }
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         height: 72px;
         width: calc(100% - 17px);
         &:hover {

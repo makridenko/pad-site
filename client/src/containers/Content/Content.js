@@ -30,6 +30,11 @@ const ContentContainer = styled.div`
     flex-direction: column;
     justify-content: center;
 
+    @media ${device.desktopS} {
+        max-width: 1280px;
+        padding: 90px 70px 110px 70px;
+    }
+
     @media ${device.mobile} {
         padding: 96px 16px 97px 16px;
         max-width: 375px;

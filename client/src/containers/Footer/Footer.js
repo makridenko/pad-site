@@ -25,9 +25,13 @@ const StyledFooter = styled.footer`
         border-bottom: 1px solid ${props => props.withPhoto ? '#fff' : '#656565'};
     }
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         position: fixed;
         bottom: 0;
+    }
+
+    @media ${device.mobile} {
+        position: static;
     }
 `;
 
@@ -40,6 +44,10 @@ const FooterContentContainer = styled.div`
     @media ${device.desktop} {
         width: 1440px;
         margin: 0 120px;
+    }
+
+    @media ${device.desktopS} {
+        width: 1140px;
     }
 
     @media ${device.mobile} {

@@ -6,7 +6,7 @@ import { device } from './css-devices';
 
 export const GlobalStyles = createGlobalStyle`
     body {
-        background: ${({theme}) => theme.mainBackground};
+        background-image: ${({theme}) => theme.mainBackground};
 
         @media ${device.mobile} {
             background: #1F1F1F;

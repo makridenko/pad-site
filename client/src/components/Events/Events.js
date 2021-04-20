@@ -15,7 +15,7 @@ import { ReactComponent as Line } from './icons/line.svg';
 
 /* Styled Components */
 const LineContainer = styled.div`
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         margin-top: 34px;
     }
 
@@ -30,7 +30,7 @@ const StyledEvents = styled.div`
     height: 432px;
     width: 599px;
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         overflow-x: hidden;
 
         &::-webkit-scrollbar {

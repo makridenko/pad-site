@@ -12,11 +12,9 @@ import { device } from '../../settings/css-devices';
 
 /* Styles Components */
 const StyledContacts = styled.div`
-    @media ${device.desktop} {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 300px));
-        grid-gap: 59px;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 300px));
+    grid-gap: 59px;
 
     @media ${device.mobile} {
         display: grid;

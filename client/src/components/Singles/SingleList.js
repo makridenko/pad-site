@@ -18,7 +18,7 @@ const StyledSingleList = styled.div`
         text-decoration: none;
     }
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         height: 576px;
         overflow-x: hidden;
 
@@ -30,6 +30,13 @@ const StyledSingleList = styled.div`
 
         &::-webkit-scrollbar-thumb {
             background: #fff;
+        }
+    }
+
+    @media ${device.mobile} {
+        overflow-x: visible;
+        &::-webkit-scrollbar {
+            display: none;
         }
     }
 `;

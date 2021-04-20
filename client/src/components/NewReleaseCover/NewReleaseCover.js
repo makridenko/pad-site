@@ -14,7 +14,7 @@ const CoverContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         margin-top: 96px;
     }
 
@@ -24,7 +24,7 @@ const CoverContainer = styled.div`
 `;
 
 const StyledCover = styled.img`
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         width: 262px;
         height: 262px;
     }

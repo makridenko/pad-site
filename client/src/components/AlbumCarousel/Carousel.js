@@ -21,7 +21,7 @@ const StyledCarousel = styled.div`
         border-right: 1px solid rgba(0,0,0,0);
     }
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         &::-webkit-scrollbar {
             height: 3px;
             border-bottom: 1px solid rgba(255,255,255,0.5);
@@ -36,6 +36,10 @@ const StyledCarousel = styled.div`
     @media ${device.mobile} {
         width: 100%;
         padding: 24px 0 0 0;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 `;
 
