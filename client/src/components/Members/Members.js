@@ -41,11 +41,8 @@ const MembersListContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-
-    @media ${device.desktop} {
-        grid-row-gap: 23px;
-        grid-column-gap: 182px;
-    }
+    grid-row-gap: 23px;
+    grid-column-gap: 182px;
 
     @media ${device.mobile} {
         width: 100%;
@@ -58,7 +55,7 @@ const PhotoContainer = styled.div`
     width: 50%;
     display: flex;
 
-    @media ${device.desktop} {
+    @media ${device.desktop}, ${device.desktopS} {
         flex-direction: row-reverse;
     }
 
