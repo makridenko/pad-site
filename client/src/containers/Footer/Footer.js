@@ -29,6 +29,10 @@ const StyledFooter = styled.footer`
         position: fixed;
         bottom: 0;
     }
+
+    @media ${device.mobile} {
+        position: static;
+    }
 `;
 
 const FooterContentContainer = styled.div`
