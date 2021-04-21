@@ -42,9 +42,6 @@ const AlbumCoverContainer = styled.div`
 
         &:hover {
             background-size: none;
-            button {
-                visibility: hidden;
-            }
         }
     }
 `;
@@ -77,10 +74,6 @@ const AlbumHoverButton = styled.button`
 
     svg {
         margin-left: 30px;
-    }
-
-    @media ${device.mobile} {
-        display: none;
     }
 `;
 

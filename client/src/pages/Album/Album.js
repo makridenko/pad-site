@@ -8,6 +8,10 @@ import styled from 'styled-components';
 import ReleaseHeader from '../../components/ReleaseHeader';
 import Lyrics from '../../components/Lyrics';
 import TrackList from '../../components/TrackList';
+import MobileTracklist from '../../components/MobileTracklist';
+
+/* Settings */
+import { device } from '../../settings/css-devices';
 
 /* Styled Components */
 const StyledAlbum = styled.div`
@@ -21,6 +25,19 @@ const AlbumContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: 72px;
+
+    @media ${device.mobile} {
+        display: none;
+    }
+`;
+
+const MobileTracklistContainer = styled.div`
+    display: flex;
+    margin-top: 48px;
+
+    @media ${device.desktop} ${device.desktopS} {
+        display: none;
+    }
 `;
 
 // Fake data
@@ -91,7 +108,12 @@ const Album = () => (
             <Lyrics
                 text={text}
             />
-        </AlbumContentContainer>          
+        </AlbumContentContainer>
+        <MobileTracklistContainer>
+            <MobileTracklist
+                songs={data}
+            />
+        </MobileTracklistContainer>     
     </StyledAlbum>
 );
 
