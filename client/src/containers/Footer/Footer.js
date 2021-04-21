@@ -26,7 +26,7 @@ const StyledFooter = styled.footer`
     }
 
     @media ${device.desktop}, ${device.desktopS} {
-        position: fixed;
+        position: ${props => props.withPhoto ? 'fixed' : 'static'};
         bottom: 0;
     }
 
@@ -39,6 +39,7 @@ const FooterContentContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: row;
+    border-top: ${props => props.withPhoto ? 'none' : '1px solid #fff'};
 
     @media ${device.desktop} {
         width: 1440px;
