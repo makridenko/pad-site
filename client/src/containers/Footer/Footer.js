@@ -39,7 +39,6 @@ const FooterContentContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: row;
-    border-top: ${props => props.withPhoto ? 'none' : '1px solid #fff'};
 
     @media ${device.desktop} {
         width: 1440px;
