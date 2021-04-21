@@ -31,6 +31,7 @@ const AlbumCoverContainer = styled.div`
             background-size: auto 120%;
             button {
                 visibility: visible;
+                backdrop-filter: blur(4px);
             }
         }
     }
@@ -42,6 +43,9 @@ const AlbumCoverContainer = styled.div`
 
         &:hover {
             background-size: none;
+            button {
+                backdrop-filter: none;
+            }
         }
     }
 `;
@@ -52,7 +56,6 @@ const AlbumHoverButton = styled.button`
     position: absolute;
     background: rgba(0,0,0,0);
     border: none;
-    backdrop-filter: blur(4px);
     outline: none;
     top: 0;
     display: flex;
