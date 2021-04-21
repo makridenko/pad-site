@@ -26,7 +26,7 @@ const AlbumCoverContainer = styled.div`
     position: relative;
     transition: 0.5s;
 
-    @media ${device.desktop}, ${device.desktopS} {
+    @media ${device.desktop}, ${device.desktopS}, (hover: hover) and (pointer: fine) {
         &:hover {
             background-size: auto 120%;
             button {
@@ -40,13 +40,6 @@ const AlbumCoverContainer = styled.div`
         flex: 0 0 100px;
         height: 100px;
         margin-right: 16px;
-
-        &:hover {
-            background-size: auto 100%;
-            button {
-                backdrop-filter: none;
-            }
-        }
     }
 `;
 
