@@ -42,7 +42,7 @@ const AlbumCoverContainer = styled.div`
         margin-right: 16px;
 
         &:hover {
-            background-size: none;
+            background-size: auto 100%;
             button {
                 backdrop-filter: none;
             }
