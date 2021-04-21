@@ -1,11 +1,12 @@
 /* React */
-import React from 'react';
+import React, { Fragment } from 'react';
 
 /* Styles */
 import styled from 'styled-components';
 
 /* Components */
 import { AlbumCover } from './AlbumCover';
+import { MobileAlbumCover } from './MobileAlbumCover';
 
 /* Settings */
 import { device } from '../../settings/css-devices';
@@ -19,27 +20,35 @@ const StyledCarousel = styled.div`
 
     &::-webkit-scrollbar {
         border-right: 1px solid rgba(0,0,0,0);
+        height: 3px;
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+        border-right: 1px solid rgba(0,0,0,0);
     }
-
-    @media ${device.desktop}, ${device.desktopS} {
-        &::-webkit-scrollbar {
-            height: 3px;
-            border-bottom: 1px solid rgba(255,255,255,0.5);
-            border-right: 1px solid rgba(0,0,0,0);
-        }
-        
-        &::-webkit-scrollbar-thumb {
-            background: #fff;
-        }
+    
+    &::-webkit-scrollbar-thumb {
+        background: #fff;
     }
 
     @media ${device.mobile} {
-        width: 100%;
-        padding: 24px 0 0 0;
+        display: none;
+    }
+`;
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
+const StyledMobileCarousel = styled.div`
+    width: 100%;
+    overflow-x: auto;
+    padding: 24px 0 0 0;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media ${device.desktop}, ${device.desktopS} {
+        display: none;
+    }
+
+    @media ${device.mobile} {
+        display: flex;
     }
 `;
 
@@ -58,9 +67,16 @@ const data = [
 ]
 
 export const Carousel = () => (
-    <StyledCarousel>
-        {data.map(album => <AlbumCover
-            src={album.coverSrc}
-        />)}
-    </StyledCarousel>
+    <Fragment>
+        <StyledCarousel>
+            {data.map(album => <AlbumCover
+                src={album.coverSrc}
+            />)}
+        </StyledCarousel>
+        <StyledMobileCarousel>
+            {data.map(album => <MobileAlbumCover
+                src={album.coverSrc}
+            />)}
+        </StyledMobileCarousel>
+    </Fragment>
 );
