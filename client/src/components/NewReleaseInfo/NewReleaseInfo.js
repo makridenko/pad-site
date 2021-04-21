@@ -36,7 +36,6 @@ const NewReleaseContainer = styled.div`
 
     p {
         max-width: 546px;
-        margin-bottom: 72px;
     }
 
     @media ${device.mobile} {
@@ -49,13 +48,12 @@ const NewReleaseContainer = styled.div`
         }
 
         p {
-            margin-top: 41px;
-            margin-bottom: 48px;
             max-width: 343px;
         }
 
         img {
-            margin-top: 24px
+            margin-top: 24px;
+            margin-bottom: 41px;
             width: 343px;
             height: 343px;
         }
