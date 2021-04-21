@@ -26,7 +26,7 @@ const AlbumCoverContainer = styled.div`
     position: relative;
     transition: 0.5s;
 
-    @media ${device.desktop}, ${device.desktopS}, (hover: hover) and (pointer: fine) {
+    @media ${device.desktop}, ${device.desktopS} {
         &:hover {
             background-size: auto 120%;
             button {
@@ -76,10 +76,10 @@ const AlbumHoverButton = styled.button`
 export const AlbumCover = ({src}) => (
     <AlbumCoverContainer src={src}>
         <Link to='/album'>
-                <AlbumHoverButton>
-                    <h3>Подробнее</h3>
-                    <Arrow />
-                </AlbumHoverButton>
+            <AlbumHoverButton>
+                <h3>Подробнее</h3>
+                <Arrow />
+            </AlbumHoverButton>
         </Link>
     </AlbumCoverContainer>
 );
