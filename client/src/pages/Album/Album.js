@@ -35,7 +35,7 @@ const MobileTracklistContainer = styled.div`
     display: flex;
     margin-top: 48px;
 
-    @media ${device.desktop} ${device.desktopS} {
+    @media ${device.desktop}, ${device.desktopS} {
         display: none;
     }
 `;
