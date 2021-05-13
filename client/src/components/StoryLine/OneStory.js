@@ -53,7 +53,7 @@ const OneStory = ({year, photoSrc, text}) => (
             <TitleH2 text={year} />
         </Container>
         <Container>
-            {photoSrc ? <img src={photoSrc} alt={year} /> : <Fragment />}
+            {photoSrc ? <img src={'http://localhost:8000/media/' + photoSrc} alt={year} /> : <Fragment />}
         </Container>
         <Container>
             <Paragraph text={text} />

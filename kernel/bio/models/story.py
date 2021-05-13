@@ -9,7 +9,7 @@ class Story(models.Model):
     Story - biography thing about band.
     """
 
-    year = models.DateField(verbose_name='Период')
+    date = models.DateField(verbose_name='Период')
     nowadays = models.BooleanField(default=0, verbose_name='По настоящее время')
     photo = models.ImageField(
         upload_to='story_cover', blank=True, null=True,
@@ -20,6 +20,13 @@ class Story(models.Model):
     class Meta:
         verbose_name = 'История'
         verbose_name_plural = 'Истории'
+        ordering = ('date',)
 
     def __str__(self):
-        return f'{self.year}'
+        return f'{self.date}'
+
+    @property
+    def only_year(self):
+        if self.nowadays:
+            return f'{self.date.year} - настоящее время'
+        return self.date.year

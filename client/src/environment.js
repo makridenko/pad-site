@@ -11,8 +11,8 @@ const network = Network.create((operation, variables) => {
     return fetch('http://localhost:8000/api/', {
         method: 'POST',
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
+            'Accept': 'Application/json',
+            'Content-Type': 'Application/json',
         },
         body: JSON.stringify({
             query: operation.text,

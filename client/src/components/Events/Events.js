@@ -86,9 +86,7 @@ const Events = () => (
             render={({error, props}) => {
                 if (error) return <div>Упс! Ошибка</div>;
                 if (!props) return <Fragment />;
-                if (props) {
-                    console.log(props);
-                    return(
+                if (props) return(
                     <StyledEvents>
                         {props.events.edges.map(edge => <OneEvent
                             key={edge.node.id}
@@ -100,7 +98,6 @@ const Events = () => (
                         />)}
                     </StyledEvents>
                 );
-                    }
             }}
         />
     </Fragment>

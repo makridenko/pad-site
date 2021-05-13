@@ -534,7 +534,7 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "year",
+              "name": "date",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -587,6 +587,18 @@
                   "name": "String",
                   "ofType": null
                 }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "onlyYear",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               }
             }
           ],

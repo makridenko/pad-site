@@ -8,6 +8,6 @@ from bio.models import Story
 @admin.register(Story)
 class StoryAdmin(admin.ModelAdmin):
     list_display = (
-        'year',
+        'date',
         'nowadays',
     )
