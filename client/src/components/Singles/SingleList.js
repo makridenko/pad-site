@@ -1,6 +1,11 @@
 /* React */
 import React, { Fragment } from 'react';
 
+/* Relay */
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import environment from '../../environment';
+
 /* Components */
 import { OneSingle } from './OneSingle';
 
@@ -19,7 +24,7 @@ const StyledSingleList = styled.div`
     }
 
     @media ${device.desktop}, ${device.desktopS} {
-        height: 576px;
+        max-height: 576px;
         overflow-x: hidden;
 
         &::-webkit-scrollbar {
@@ -50,114 +55,55 @@ const FakeLine = styled.div`
     }
 `;
 
-// Fake data
-const data = [
-    {
-        imgSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album',
-        title: 'летом нельзя плакать',
-        date: '13 сентября 2020',
-        vkLink: 'https://vk.com/',
-        iTunesLink: 'https://vk.com/',
-        spotifyLink: 'https://vk.com/',
-        youtubeLink: 'https://youtube.com/',
-        dezeerLink: 'https://vk.com/',
-        yandexLink: 'https://yandex.com/',
-    },
-    {
-        imgSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album',
-        title: 'летом нельзя плакать',
-        date: '13 сентября 2020',
-        vkLink: 'https://vk.com/',
-        iTunesLink: 'https://vk.com/',
-        spotifyLink: 'https://vk.com/',
-        youtubeLink: 'https://youtube.com/',
-        dezeerLink: 'https://vk.com/',
-        yandexLink: 'https://yandex.com/',
-    },
-    {
-        imgSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album',
-        title: 'летом нельзя плакать',
-        date: '13 сентября 2020',
-        vkLink: 'https://vk.com/',
-        iTunesLink: 'https://vk.com/',
-        spotifyLink: 'https://vk.com/',
-        youtubeLink: 'https://youtube.com/',
-        dezeerLink: 'https://vk.com/',
-        yandexLink: 'https://yandex.com/',
-    },
-    {
-        imgSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album',
-        title: 'летом нельзя плакать',
-        date: '13 сентября 2020',
-        vkLink: 'https://vk.com/',
-        iTunesLink: 'https://vk.com/',
-        spotifyLink: 'https://vk.com/',
-        youtubeLink: 'https://youtube.com/',
-        dezeerLink: 'https://vk.com/',
-        yandexLink: 'https://yandex.com/',
-    },
-    {
-        imgSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album',
-        title: 'летом нельзя плакать',
-        date: '13 сентября 2020',
-        vkLink: 'https://vk.com/',
-        iTunesLink: 'https://vk.com/',
-        spotifyLink: 'https://vk.com/',
-        youtubeLink: 'https://youtube.com/',
-        dezeerLink: 'https://vk.com/',
-        yandexLink: 'https://yandex.com/',
-    },
-    {
-        imgSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album',
-        title: 'летом нельзя плакать',
-        date: '13 сентября 2020',
-        vkLink: 'https://vk.com/',
-        iTunesLink: 'https://vk.com/',
-        spotifyLink: 'https://vk.com/',
-        youtubeLink: 'https://youtube.com/',
-        dezeerLink: 'https://vk.com/',
-        yandexLink: 'https://yandex.com/',
-    },
-    {
-        imgSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album',
-        title: 'летом нельзя плакать',
-        date: '13 сентября 2020',
-        vkLink: 'https://vk.com/',
-        iTunesLink: 'https://vk.com/',
-        spotifyLink: 'https://vk.com/',
-        youtubeLink: 'https://youtube.com/',
-        dezeerLink: 'https://vk.com/',
-        yandexLink: 'https://yandex.com/',
-    },
-    {
-        imgSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album',
-        title: 'летом нельзя плакать',
-        date: '13 сентября 2020',
-        vkLink: 'https://vk.com/',
-        iTunesLink: 'https://vk.com/',
-        spotifyLink: 'https://vk.com/',
-        youtubeLink: 'https://youtube.com/',
-        dezeerLink: 'https://vk.com/',
-        yandexLink: 'https://yandex.com/',
-    },
-]
+/* Query */
+const SingleListQuery = graphql`
+query SingleListQuery {
+    releases(isSingle: true) {
+        edges {
+            node {
+                id
+                title
+                cover
+                humanDate
+                vkLink
+                appleMusicLink
+                spotifyLink
+                youtubeLink
+                deezerLink
+                yandexMusicLink
+            }
+        }
+    }
+}
+`;
 
 const SingleList = () => (
     <Fragment>
         <FakeLine />
-        <StyledSingleList>
-            {data.map(single => <OneSingle
-                imgSrc={single.imgSrc}
-                title={single.title}
-                date={single.date}
-                vkLink={single.vkLink}
-                iTunesLink={single.iTunesLink}
-                spotifyLink={single.spotifyLink}
-                youtubeLink={single.youtubeLink}
-                dezeerLink={single.dezeerLink}
-                yandexLink={single.yandexLink}
-            />)}
-        </StyledSingleList>
+        <QueryRenderer
+            environment={environment}
+            query={SingleListQuery}
+            render={({error, props}) => {
+                if (error) return <div>Упс! Ошибка</div>;
+                if (!props) return <Fragment />;
+                if (props) return (
+                    <StyledSingleList>
+                        {props.releases.edges.map(edge => <OneSingle 
+                            key={edge.node.id}
+                            title={edge.node.title}
+                            imgSrc={`http://localhost:8000/media/${edge.node.cover}`}
+                            date={edge.node.humanDate}
+                            vkLink={edge.node.vkLink}
+                            iTunesLink={edge.node.appleMusicLink}
+                            spotifyLink={edge.node.spotifyLink}
+                            youtubeLink={edge.node.youtubeLink}
+                            deezerLink={edge.node.deezerLink}
+                            yandexLink={edge.node.yandexLink}
+                        />)}
+                    </StyledSingleList>
+                )
+            }}
+        />
     </Fragment>
 );
 

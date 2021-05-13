@@ -112,7 +112,7 @@ export const OneSingle = ({
     iTunesLink,
     spotifyLink,
     youtubeLink,
-    dezeerLink,
+    deezerLink,
     yandexLink,
 }) => {
     return (
@@ -132,7 +132,7 @@ export const OneSingle = ({
                     iTunesLink={iTunesLink}
                     spotifyLink={spotifyLink}
                     youtubeLink={youtubeLink}
-                    dezeerLink={dezeerLink}
+                    dezeerLink={deezerLink}
                     yandexLink={yandexLink}
                 />
                 <ArrowContainer>

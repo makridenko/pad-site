@@ -2,6 +2,8 @@
 
 from django.db import models
 
+from utils.date_helpers import MONTH_TITLES
+
 
 class Release(models.Model):
     """
@@ -37,3 +39,9 @@ class Release(models.Model):
         if self.is_single:
             return f'{self.title} - Single'
         return self.title
+
+    @property
+    def human_date(self):
+        """ Returns human date in format 'day(int) month(str) year(int)' """
+        month = MONTH_TITLES[self.release_date.month]
+        return f'{self.release_date.day} {month} {self.release_date.year}'

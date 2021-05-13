@@ -28,23 +28,6 @@ const StyledContacts = styled.div`
     }
 `;
 
-// Fake data
-const data = [
-    {
-        title: 'Кирилл Ивошин',
-        mail: 'mail@example.ru',
-        vkLink: 'https://vk.com/tsar_linchetti',
-        instagramLink: 'foo.bar',
-        telegramLink: 'foo.bar',
-    },
-    {
-        title: 'Семен Ремыга',
-        mail: 'mail@example.ru',
-        vkLink: 'https://vk.com/id30311642',
-        instagramLink: 'foo.bar',
-    },
-];
-
 /* Query */
 const ContactsQuery = graphql`
 query ContactsQuery {
@@ -84,17 +67,5 @@ const Contacts = () => <QueryRenderer
         )
     }}
 />;
-//     <StyledContacts>
-//         {data.map(contact => (
-//             <OneContact
-//                 title={contact.title}
-//                 mail={contact.mail}
-//                 vkLink={contact.vkLink}
-//                 instagramLink={contact.instagramLink}
-//                 telegramLink={contact.telegramLink}
-//             />
-//         ))}
-//     </StyledContacts>
-// );
 
 export default Contacts;

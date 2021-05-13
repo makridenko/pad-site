@@ -1,16 +1,28 @@
 # -*- coding: utf-8 -*-
 
+import graphene
 from graphene import relay, ObjectType
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
+import django_filters
+from django_filters import FilterSet
+
 from music.models import Release
 
 
-class ReleaseNode(DjangoObjectType):
+class ReleaseFilter(FilterSet):
     class Meta:
         model = Release
-        filter_fields = []
+        fields = ['is_single']
+
+
+class ReleaseNode(DjangoObjectType):
+    human_date = graphene.String(source='human_date')
+
+    class Meta:
+        model = Release
+        filterset_class = ReleaseFilter
         interfaces = (relay.Node,)
 
 

@@ -327,6 +327,16 @@
                     "name": "Int",
                     "ofType": null
                   }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "isSingle",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
                 }
               ],
               "deprecationReason": null,
@@ -1343,6 +1353,18 @@
                   "name": "SongNodeConnection",
                   "ofType": null
                 }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "humanDate",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               }
             }
           ],
