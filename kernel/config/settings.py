@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     # Own applications
     'events',
     'music',
+    'bio',
 ]
 
 MIDDLEWARE = [
