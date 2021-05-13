@@ -104,6 +104,16 @@
                     "name": "Int",
                     "ofType": null
                   }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "isContactFace",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
                 }
               ],
               "deprecationReason": null,
@@ -648,6 +658,18 @@
               "description": "",
               "isDeprecated": false,
               "name": "telegramLink",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "instagramLink",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",

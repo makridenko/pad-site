@@ -107,6 +107,7 @@ const Members = () => (
                     if (props) return (
                         <MembersListContainer>
                             {props.members.edges.map(edge => <OneMember
+                                key={edge.node.id}
                                 title={`${edge.node.firstName} ${edge.node.lastName}`}
                                 position={edge.node.position}
                                 link={edge.node.vkLink}

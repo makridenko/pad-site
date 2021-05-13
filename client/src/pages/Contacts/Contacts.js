@@ -1,5 +1,10 @@
 /* React */
-import React from 'react';
+import React, { Fragment } from 'react';
+
+/* Relay */
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import environment from '../../environment';
 
 /* Styles */
 import styled from 'styled-components';
@@ -40,18 +45,56 @@ const data = [
     },
 ];
 
-const Contacts = () => (
-    <StyledContacts>
-        {data.map(contact => (
-            <OneContact
-                title={contact.title}
-                mail={contact.mail}
-                vkLink={contact.vkLink}
-                instagramLink={contact.instagramLink}
-                telegramLink={contact.telegramLink}
-            />
-        ))}
-    </StyledContacts>
-);
+/* Query */
+const ContactsQuery = graphql`
+query ContactsQuery {
+    members(isContactFace: true) {
+        edges {
+            node {
+                id
+                firstName
+                lastName
+                vkLink
+                telegramLink
+                instagramLink
+                mail
+            }
+        }
+    }
+}
+`;
+
+const Contacts = () => <QueryRenderer
+    environment={environment}
+    query={ContactsQuery}
+    render={({error, props}) => {
+        if (error) return <div>Упс! Ошибка</div>;
+        if (!props) return <Fragment />;
+        if (props) return (
+            <StyledContacts>
+                {props.members.edges.map(edge => <OneContact 
+                    key={edge.node.id}
+                    title={`${edge.node.firstName} ${edge.node.lastName}`}
+                    mail={edge.node.mail}
+                    vkLink={edge.node.vkLink}
+                    instagramLink={edge.node.instagramLink}
+                    telegramLink={edge.node.telegramLink}
+                />)}
+            </StyledContacts>
+        )
+    }}
+/>;
+//     <StyledContacts>
+//         {data.map(contact => (
+//             <OneContact
+//                 title={contact.title}
+//                 mail={contact.mail}
+//                 vkLink={contact.vkLink}
+//                 instagramLink={contact.instagramLink}
+//                 telegramLink={contact.telegramLink}
+//             />
+//         ))}
+//     </StyledContacts>
+// );
 
 export default Contacts;

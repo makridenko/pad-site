@@ -24,6 +24,9 @@ class Member(models.Model):
     telegram_link = models.URLField(
         blank=True, null=True, verbose_name='Ссылка на телеграмм',
     )
+    instagram_link = models.URLField(
+        blank=True, null=True, verbose_name='Ссылка на инстаграм',
+    )
     position = models.CharField(
         max_length=255, verbose_name='Роль в группе',
     )
