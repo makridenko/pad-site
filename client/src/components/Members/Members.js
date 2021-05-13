@@ -1,5 +1,10 @@
 /* React */
-import React from 'react';
+import React, { Fragment } from 'react';
+
+/* Relay */
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import environment from '../../environment';
 
 /* Styles */
 import styled from 'styled-components';
@@ -69,34 +74,47 @@ const PhotoContainer = styled.div`
     }
 `;
 
+/* Query */
+const MembersQuery = graphql`
+query MembersQuery {
+    members {
+        edges {
+            node {
+                id
+                firstName
+                lastName
+                vkLink
+                position
+            }
+        }
+    }
+}
+`;
 
-
-// Test data
-const membersData = [
-    {title: 'Картер Холл', position: 'барабаны', link: 'https://vk.com/carterrrhall'},
-    {title: 'Семен Ремыга', position: 'вокал, гитара, труба, клавиши', link: null},
-    {title: 'Кирилл Ивошин', position: 'гитара, вокал', link: null},
-    {title: 'Ира Павлова', position: 'вокал, клавиши', link: 'https://vk.com/stuckinreverse'},
-    {title: 'Антон Бякин', position: 'труба', link: null},
-    {title: 'Егор Жирохов', position: 'бас', link: 'https://vk.com/coolface1337'},
-];
-
+// Fake data
 const bandPhoto = 'https://source.unsplash.com/541x288/?music,band';
-
 
 const Members = () => (
     <StyledMembers>
         <TitleH1 text={'Участники'} />
         <ContentContainer>
-            <MembersListContainer>
-                {membersData.map(member => (
-                    <OneMember
-                        title={member.title}
-                        position={member.position}
-                        link={member.link}
-                    />
-                ))}
-            </MembersListContainer>
+            <QueryRenderer
+                environment={environment}
+                query={MembersQuery}
+                render={({error, props}) => {
+                    if (error) return <div>Упс! Ошибка</div>;
+                    if (!props) return <Fragment />;
+                    if (props) return (
+                        <MembersListContainer>
+                            {props.members.edges.map(edge => <OneMember
+                                title={`${edge.node.firstName} ${edge.node.lastName}`}
+                                position={edge.node.position}
+                                link={edge.node.vkLink}
+                            />)}
+                        </MembersListContainer>
+                    )
+                }}
+            />
             <PhotoContainer>
                 <img alt={'фото и напитки'} src={bandPhoto} />
             </PhotoContainer>
