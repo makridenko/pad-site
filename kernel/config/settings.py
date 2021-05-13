@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'events',
     'music',
     'bio',
+    'members',
 ]
 
 MIDDLEWARE = [
