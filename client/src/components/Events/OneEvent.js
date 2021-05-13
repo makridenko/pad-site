@@ -22,6 +22,8 @@ const StyledOneEvent = styled.div`
     @media ${device.desktop}, ${device.desktopS} {
         width: 566px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+        cursor: pointer;
     }
 
     @media ${device.mobile} {
@@ -58,8 +60,8 @@ const PlaceContainer = styled.div`
 `;
 
 
-const OneEvent = ({date, day, title, placeTitle}) => (
-    <StyledOneEvent>
+const OneEvent = ({date, day, title, placeTitle, eventLink}) => (
+    <StyledOneEvent onClick={() => window.open(eventLink)}>
         <DateContainer>
             <TitleH3 main={true} text={date} />
             <TitleH3 text={day} />

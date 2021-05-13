@@ -1362,7 +1362,7 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "placeLink",
+              "name": "place",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -1387,6 +1387,30 @@
                   "name": "String",
                   "ofType": null
                 }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "day",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "humanDate",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               }
             }
           ],

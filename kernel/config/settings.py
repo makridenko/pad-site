@@ -2,7 +2,7 @@
 
 import os
 
-from .local_settings import ALLOWED_HOSTS
+from .local_settings import ALLOWED_HOSTS, CORS_ORIGIN_WHITELIST
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,6 +21,8 @@ INSTALLED_APPS = [
 
     'graphene_django',
 
+    'corsheaders',
+
     # Own applications
     'events',
     'music',
@@ -31,6 +33,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
