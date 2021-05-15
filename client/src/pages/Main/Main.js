@@ -70,25 +70,25 @@ const Main = () => {
                 <StyledMain>
                     {mobileScreen ?
                         <MainMobile
-                            releaseId={props.lastRelease.id}
+                            releaseId={props.lastRelease?.id}
                             isNewRelease={isNewRelease}
                             setNewRelease={setNewRelease}
                             bandDescription={bandDescriptionText}
-                            releaseType={props.lastRelease.isSingle ? 'Сингл' : 'Альбом'}
-                            releaseTitle={props.lastRelease.title}
-                            releaseDescription={props.lastRelease.aboutText}
-                            releasePhotoSrc={`http://localhost:8000/media/${props.lastRelease.cover}`}
+                            releaseType={props.lastRelease?.isSingle ? 'Сингл' : 'Альбом'}
+                            releaseTitle={props.lastRelease?.title}
+                            releaseDescription={props.lastRelease?.aboutText}
+                            releasePhotoSrc={`http://localhost:8000/media/${props.lastRelease?.cover}`}
                         />
                         :
                         <MainDesktop
-                            releaseId={props.lastRelease.id}
+                            releaseId={props.lastRelease?.id}
                             isNewRelease={isNewRelease}
                             setNewRelease={setNewRelease}
                             bandDescription={bandDescriptionText}
-                            releaseType={props.lastRelease.isSingle ? 'Сингл' : 'Альбом'}
-                            releaseTitle={props.lastRelease.title}
-                            releaseDescription={props.lastRelease.aboutText}
-                            releasePhotoSrc={`http://localhost:8000/media/${props.lastRelease.cover}`}
+                            releaseType={props.lastRelease?.isSingle ? 'Сингл' : 'Альбом'}
+                            releaseTitle={props.lastRelease?.title}
+                            releaseDescription={props.lastRelease?.aboutText}
+                            releasePhotoSrc={`http://localhost:8000/media/${props.lastRelease?.cover}`}
                         />
                     }
                 </StyledMain>

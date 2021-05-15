@@ -57,7 +57,8 @@ const MembersListContainer = styled.div`
 `;
 
 const PhotoContainer = styled.div`
-    width: 50%;
+    width: 541px;
+    height: 288px;
     display: flex;
 
     @media ${device.desktop}, ${device.desktopS} {
@@ -91,8 +92,7 @@ query MembersQuery {
 }
 `;
 
-// Fake data
-const bandPhoto = 'https://source.unsplash.com/541x288/?music,band';
+const bandPhoto = 'http://localhost:8000/media/settings/band_photo_bio.png';
 
 const Members = () => (
     <StyledMembers>
@@ -117,7 +117,10 @@ const Members = () => (
                 }}
             />
             <PhotoContainer>
-                <img alt={'фото и напитки'} src={bandPhoto} />
+                <img 
+                    alt={'фото и напитки'} 
+                    src={bandPhoto}
+                />
             </PhotoContainer>
         </ContentContainer>
     </StyledMembers>

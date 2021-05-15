@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'bio',
     'members',
     'utils',
+    'site_settings',
 ]
 
 MIDDLEWARE = [

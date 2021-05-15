@@ -85,21 +85,21 @@ const Single = (props) => {
             if (!props) return <Fragment />;
             if (props) {
                 // Get single id from song set
-                const songId = props.release.songSet.edges[0].node.id;
+                const songId = props.release?.songSet.edges[0].node.id;
 
                 return (
                     <StyledSingle>
                         <ReleaseHeader 
-                            releasePhotoSrc={`http://localhost:8000/media/${props.release.cover}`}
-                            releaseTitle={props.release.title}
-                            date={props.release.humanDate}
-                            labelTitle={props.release.label}
-                            vkLink={props.release.vkLink}
-                            appleMusicLink={props.release.appleMusicLink}
-                            spotifyLink={props.release.spotifyLink}
-                            youtubeLink={props.release.youtubeLink}
-                            deezerLink={props.release.deezerLink}
-                            yandexLink={props.release.yandexLink}
+                            releasePhotoSrc={`http://localhost:8000/media/${props.release?.cover}`}
+                            releaseTitle={props.release?.title}
+                            date={props.release?.humanDate}
+                            labelTitle={props.release?.label}
+                            vkLink={props.release?.vkLink}
+                            appleMusicLink={props.release?.appleMusicLink}
+                            spotifyLink={props.release?.spotifyLink}
+                            youtubeLink={props.release?.youtubeLink}
+                            deezerLink={props.release?.deezerLink}
+                            yandexLink={props.release?.yandexLink}
                         />
                         <SingleContentContainer>
                             <FakeContainer />

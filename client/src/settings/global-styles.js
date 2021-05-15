@@ -19,5 +19,5 @@ export const defaultMode = {
 };
 
 export const photoMode = {
-    mainBackground: 'url(https://www.teahub.io/photos/full/173-1736604_american-football-band-phone.jpg)',
+    mainBackground: 'url(http://localhost:8000/media/settings/band_photo.png)',
 };

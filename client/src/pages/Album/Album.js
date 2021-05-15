@@ -76,7 +76,7 @@ query AlbumQuery($albumID: ID!) {
 
 const Album = (props) => {
     // Get album id from url
-    const albumID = props.match.params.albumId;
+    let albumID = props.match.params.albumId;
 
     // Hook for change song id lyric
     const [currentSongId, setCurrentSongId] = useState(null);
@@ -93,20 +93,20 @@ const Album = (props) => {
             if (props) return (
                 <StyledAlbum>
                     <ReleaseHeader
-                        releasePhotoSrc={`http://localhost:8000/media/${props.release.cover}`}
-                        releaseTitle={props.release.title}
-                        date={props.release.humanDate}
-                        labelTitle={props.release.label}
-                        vkLink={props.release.vkLink}
-                        appleMusicLink={props.release.appleMusicLink}
-                        spotifyLink={props.release.spotifyLink}
-                        youtubeLink={props.release.youtubeLink}
-                        deezerLink={props.release.deezerLink}
-                        yandexLink={props.release.yandexLink}
+                        releasePhotoSrc={`http://localhost:8000/media/${props.release?.cover}`}
+                        releaseTitle={props.release?.title}
+                        date={props.release?.humanDate}
+                        labelTitle={props.release?.label}
+                        vkLink={props.release?.vkLink}
+                        appleMusicLink={props.release?.appleMusicLink}
+                        spotifyLink={props.release?.spotifyLink}
+                        youtubeLink={props.release?.youtubeLink}
+                        deezerLink={props.release?.deezerLink}
+                        yandexLink={props.release?.yandexLink}
                     />
                     <AlbumContentContainer>
                         <TrackList
-                            songs={props.release.songSet}
+                            songs={props.release?.songSet}
                             currentSongId={currentSongId}
                             setCurrentSongId={setCurrentSongId}
                         />
@@ -116,7 +116,7 @@ const Album = (props) => {
                     </AlbumContentContainer>
                     <MobileTracklistContainer>
                         <MobileTracklist
-                            songs={props.release.songSet}
+                            songs={props.release?.songSet}
                         />
                     </MobileTracklistContainer>
                 </StyledAlbum>
