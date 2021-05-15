@@ -35,8 +35,8 @@ const FakeLine = styled.div`
     display: ${props => props.active ? 'flex': 'none'};
 `;
 
-export const OneSong = ({title, active}) => (
-    <StyledOneSong active={active}>
+export const OneSong = ({title, active, onClick}) => (
+    <StyledOneSong active={active} onClick={onClick}>
         <FakeLine className='line' active={active} />
         <TitleH3 text={title} />
     </StyledOneSong>

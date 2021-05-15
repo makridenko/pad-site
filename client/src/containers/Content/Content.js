@@ -48,10 +48,11 @@ const Content = () => (
         <Switch>
             <ContentContainer>
                 {routes.map(route => (
-                    <Route exact
+                    <Route
+                        exact
                         key={route.link}
                         path={route.link}
-                        component={() => route.component}
+                        render={(props) => <route.component {...props} />}
                     />
                 ))}
             </ContentContainer>

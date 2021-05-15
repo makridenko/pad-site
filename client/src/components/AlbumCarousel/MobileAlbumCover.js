@@ -30,9 +30,9 @@ const MobileAlbumCoverContainer = styled.div`
     }
 `;
 
-export const MobileAlbumCover = ({src}) => (
+export const MobileAlbumCover = ({src, albumId}) => (
     <MobileAlbumCoverContainer src={src}>
-        <Link to='/album'>
+        <Link to={`/album/${albumId}`}>
             <button />
         </Link>
     </MobileAlbumCoverContainer>

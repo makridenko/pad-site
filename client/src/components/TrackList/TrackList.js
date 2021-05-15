@@ -25,19 +25,23 @@ const StyledSongs = styled.div`
 `;
 
 
-const TrackList = ({songs}) => (
-    <StyledTrackListContainer>
-        <TitleH3 text={'Треклист'} thin={true} />
-        <StyledSongs>
-            {songs.map(song => (
-                <OneSong
-                    key={song.title}
-                    title={song.title}
-                    active={song.active}
-                />
-            ))}
-        </StyledSongs>
-    </StyledTrackListContainer>
-);
+const TrackList = ({songs, currentSongId, setCurrentSongId}) => {
+
+    const _openLyrics = (id) => setCurrentSongId(id);
+
+    return (
+        <StyledTrackListContainer>
+            <TitleH3 text={'Треклист'} thin={true} />
+            <StyledSongs>
+                {songs.edges.map(edge => <OneSong 
+                    key={edge.node.id}
+                    title={edge.node.title}
+                    active={currentSongId === edge.node.id}
+                    onClick={() => _openLyrics(edge.node.id)}
+                />)}
+            </StyledSongs>
+        </StyledTrackListContainer>
+    );
+};
 
 export default TrackList;

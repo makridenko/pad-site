@@ -1,5 +1,10 @@
 /* React */
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
+
+/* Relay */
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import environment from '../../environment';
 
 /* Styles */
 import styled from 'styled-components';
@@ -25,39 +30,16 @@ const LyricsContainer = styled.div`
     margin-bottom: 96px;
 `;
 
-// Fake data
-const text = `Порой зеленых чистых листьев,
-Где до рассвета стелется туман,
-Закаты теплые так близко,
-Моих фантазий красочный фонтан.
-
-В эту пору почувствуешь дыханье,
-Дыханье ветра - с ним не совладать.
-Поля цветов, исполнятся желанья,
-Не нужно так страдать.
-
-Дорога стелется во мраке,
-Кругом разлуки, суета и драки,
-Осень вернет уныние и слякоть,
-Но летом нельзя плакать.
-
-Ходить быстрее, верить так уперто,
-Что просто цели выльются в мечты.
-Даром не нужно - посылаю к черту,
-Не видя красоты.
-
-Порой зеленых чистых листьев,
-Где до рассвета стелется туман,
-К закатам теплым прикоснись ты,
-На зиму положи в карман.
-
-Дорога стелется во мраке,
-Кругом разлуки, суета и драки,
-Осень вернет уныние и слякоть,
-Но летом нельзя плакать.
+/* Query */
+const OneSongQuery = graphql`
+query OneSongQuery($songID: ID!) {
+    song(id: $songID) {
+        lyrics
+    }
+}
 `;
 
-export const OneSong = ({title, lyrics}) => {
+export const OneSong = ({title, songId}) => {
 
     // Hook for open song lyrics
     const [lyricsOpen, setOpen] = useState(false);
@@ -65,14 +47,26 @@ export const OneSong = ({title, lyrics}) => {
     // Method for toggle lyrics
     const _toggleLyrics = () => setOpen(!lyricsOpen);
 
-    return (
-        <StyledOneSong>
-            <TitleContainer onClick={() => _toggleLyrics()} isOpen={lyricsOpen}>
-                <TitleH3 text={title} />
-            </TitleContainer>
-            <LyricsContainer isOpen={lyricsOpen}>
-                <Paragraph pre text={text} />
-            </LyricsContainer>
-        </StyledOneSong>
-    );
+    return <QueryRenderer
+        environment={environment}
+        query={OneSongQuery}
+        variables={{
+            songID: songId
+        }}
+        render={({error, props}) => {
+            if (error) return <div>Упс! Ошибка</div>;
+            if (!props) return <Fragment />;
+            if (props) return (
+                <StyledOneSong>
+                    <TitleContainer onClick={() => _toggleLyrics()} isOpen={lyricsOpen}>
+                        <TitleH3 text={title} />
+                    </TitleContainer>
+                    <LyricsContainer isOpen={lyricsOpen}>
+                        <Paragraph pre text={props.song.lyrics} />
+                    </LyricsContainer>
+                </StyledOneSong>
+            );
+        }}
+        
+    />;
 };

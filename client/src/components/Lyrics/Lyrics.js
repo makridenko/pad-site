@@ -1,5 +1,10 @@
 /* React */
-import React from 'react';
+import React, { Fragment } from 'react';
+
+/* Relay */
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import environment from '../../environment';
 
 /* Styles */
 import styled from 'styled-components';
@@ -30,11 +35,39 @@ const StyledLyrics = styled.div`
 `;
 
 
-const Lyrics = ({text, single}) => (
+/* Query */
+const LyricsQuery = graphql`
+query LyricsQuery($songID: ID!) {
+    song(id: $songID) {
+        lyrics
+    }
+}
+`;
+
+const Lyrics = ({currentSongId, single}) => (
     <StyledLyrics single={single}>
-        <TitleH3 text={'Текст'} />
-        <Paragraph pre={true} text={text} />
-    </StyledLyrics>
+        {currentSongId ? 
+            <QueryRenderer
+                environment={environment}
+                query={LyricsQuery}
+                variables={{
+                    songID: currentSongId,
+                }}
+                render={({error, props}) => {
+                    if (error) return <div>Упс! Ошибка</div>
+                    if (!props) return <Fragment />;
+                    if (props) return (
+                        <Fragment>
+                            <TitleH3 text={'Текст'} />
+                            <Paragraph pre={true} text={props.song.lyrics} />
+                        </Fragment>
+                    );
+                }}
+            />
+        :
+            <Fragment />
+        }
+   </StyledLyrics>
 );
 
 export default Lyrics;

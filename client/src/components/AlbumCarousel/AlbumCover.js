@@ -73,9 +73,9 @@ const AlbumHoverButton = styled.button`
     }
 `;
 
-export const AlbumCover = ({src}) => (
+export const AlbumCover = ({src, albumId}) => (
     <AlbumCoverContainer src={src}>
-        <Link to='/album'>
+        <Link to={`/album/${albumId}`}>
             <AlbumHoverButton>
                 <h3>Подробнее</h3>
                 <Arrow />

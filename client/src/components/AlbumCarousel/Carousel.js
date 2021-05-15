@@ -1,6 +1,11 @@
 /* React */
 import React, { Fragment } from 'react';
 
+/* Relay */
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import environment from '../../environment';
+
 /* Styles */
 import styled from 'styled-components';
 
@@ -52,31 +57,47 @@ const StyledMobileCarousel = styled.div`
     }
 `;
 
-
-// Fake data
-const data = [
-    {coverSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'},
-    {coverSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'},
-    {coverSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'},
-    {coverSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'},
-    {coverSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'},
-    {coverSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'},
-    {coverSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'},
-    {coverSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'},
-    {coverSrc: 'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'},
-]
+/* Query */
+const CarouselQuery = graphql`
+query CarouselQuery {
+    releases(isSingle: false) {
+        edges {
+            node {
+                id
+                cover
+            }
+        }
+    }
+}
+`;
 
 export const Carousel = () => (
     <Fragment>
-        <StyledCarousel>
-            {data.map(album => <AlbumCover
-                src={album.coverSrc}
-            />)}
-        </StyledCarousel>
-        <StyledMobileCarousel>
-            {data.map(album => <MobileAlbumCover
-                src={album.coverSrc}
-            />)}
-        </StyledMobileCarousel>
+        <QueryRenderer
+            environment={environment}
+            query={CarouselQuery}
+            render={({error, props}) => {
+                if (error) return <div>Упс! Ошибка</div>;
+                if (!props) return <Fragment />;
+                if (props) return (
+                    <Fragment>
+                        <StyledCarousel>
+                            {props.releases.edges.map(edge => <AlbumCover
+                                key={edge.node.id}
+                                albumId={edge.node.id}
+                                src={`http://localhost:8000/media/${edge.node.cover}`}
+                            />)}
+                        </StyledCarousel>
+                        <StyledMobileCarousel>
+                            {props.releases.edges.map(edge => <MobileAlbumCover 
+                                key={edge.node.id}
+                                albumId={edge.node.id}
+                                src={`http://localhost:8000/media/${edge.node.cover}`}
+                            />)}
+                        </StyledMobileCarousel>
+                    </Fragment>
+                );
+            }}
+        />
     </Fragment>
 );
