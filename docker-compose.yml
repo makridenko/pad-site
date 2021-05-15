@@ -9,7 +9,9 @@ services:
     command: /bin/bash -c "while true; do echo faking deamon; sleep 60; done"
   web:
     volumes:
+      - ./kernel:/app
       - ./kernel/static:/app/static
+      - ./kernel/media:/app/media
     env_file:
       - ./kernel/.env
     build: ./kernel
@@ -19,6 +21,7 @@ services:
     build: ./nginx
     volumes:
       - ./kernel/static:/static
+      - ./kernel/media:/media
     ports:
       - "80:80"
     depends_on:
