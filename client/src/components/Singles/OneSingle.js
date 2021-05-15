@@ -105,6 +105,7 @@ const ArrowContainer = styled.div`
 
 
 export const OneSingle = ({
+    id,
     imgSrc, 
     title, 
     date, 
@@ -116,7 +117,7 @@ export const OneSingle = ({
     yandexLink,
 }) => {
     return (
-        <Link to='/single'>
+        <Link to={`/single/${id}`}>
             <StyledOneSingle>
                 <ImageContainer>
                     <img alt={title} src={imgSrc} />

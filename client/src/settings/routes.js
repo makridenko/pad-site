@@ -11,7 +11,7 @@ export const routes = [
     {link: '/music', component: Music},
     {link: '/about', component: About},
     {link: '/contacts', component: Contacts},
-    {link: '/single', component: SinglePage},
+    {link: '/single/:singleId', component: SinglePage},
     {link: '/album/:albumId', component: AlbumPage},
     {link: '/', component: Main},
 ];

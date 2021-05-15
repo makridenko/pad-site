@@ -88,7 +88,8 @@ const SingleList = () => (
                 if (!props) return <Fragment />;
                 if (props) return (
                     <StyledSingleList>
-                        {props.releases.edges.map(edge => <OneSingle 
+                        {props.releases.edges.map(edge => <OneSingle
+                            id={edge.node.id}
                             key={edge.node.id}
                             title={edge.node.title}
                             imgSrc={`http://localhost:8000/media/${edge.node.cover}`}
