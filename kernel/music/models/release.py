@@ -34,6 +34,7 @@ class Release(models.Model):
     class Meta:
         verbose_name = 'Релиз'
         verbose_name_plural = 'Релизы'
+        ordering = ('-release_date',)
 
     def __str__(self):
         if self.is_single:
