@@ -19,6 +19,7 @@ import { useWindowWidth } from './helpers';
 /* Settings */
 import { device } from '../../settings/css-devices';
 import { AppContext } from '../../App';
+import { BACKEND_URL } from '../../global_settings';
 
 /* Styled Components */
 const StyledMain = styled.div`
@@ -77,7 +78,7 @@ const Main = () => {
                             releaseType={props.lastRelease?.isSingle ? 'Сингл' : 'Альбом'}
                             releaseTitle={props.lastRelease?.title}
                             releaseDescription={props.lastRelease?.aboutText}
-                            releasePhotoSrc={`http://localhost:8000/media/${props.lastRelease?.cover}`}
+                            releasePhotoSrc={`${BACKEND_URL}/media/${props.lastRelease?.cover}`}
                         />
                         :
                         <MainDesktop
@@ -88,7 +89,7 @@ const Main = () => {
                             releaseType={props.lastRelease?.isSingle ? 'Сингл' : 'Альбом'}
                             releaseTitle={props.lastRelease?.title}
                             releaseDescription={props.lastRelease?.aboutText}
-                            releasePhotoSrc={`http://localhost:8000/media/${props.lastRelease?.cover}`}
+                            releasePhotoSrc={`${BACKEND_URL}/media/${props.lastRelease?.cover}`}
                         />
                     }
                 </StyledMain>

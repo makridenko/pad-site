@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 
 /* settings */
 import { device } from './css-devices';
+import { BACKEND_URL } from '../global_settings';
 
 export const GlobalStyles = createGlobalStyle`
     body {
@@ -19,5 +20,5 @@ export const defaultMode = {
 };
 
 export const photoMode = {
-    mainBackground: 'url(http://localhost:8000/media/settings/band_photo.png)',
+    mainBackground: `url(${BACKEND_URL}/media/settings/band_photo.png)`,
 };

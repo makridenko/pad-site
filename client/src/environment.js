@@ -5,10 +5,12 @@ import {
     Store,
 } from 'relay-runtime';
 
+import { BACKEND_URL } from './global_settings';
+
 const store = new Store(new RecordSource());
 
 const network = Network.create((operation, variables) => {
-    return fetch('http://localhost:8000/api/', {
+    return fetch(`${BACKEND_URL}/api/`, {
         method: 'POST',
         headers: {
             'Accept': 'Application/json',

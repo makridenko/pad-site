@@ -14,6 +14,7 @@ import styled from 'styled-components';
 
 /* Settings */
 import { device } from '../../settings/css-devices';
+import { BACKEND_URL } from '../../global_settings';
 
 /* Styled Components */
 const StyledSingleList = styled.div`
@@ -92,7 +93,7 @@ const SingleList = () => (
                             id={edge.node.id}
                             key={edge.node.id}
                             title={edge.node.title}
-                            imgSrc={`http://localhost:8000/media/${edge.node.cover}`}
+                            imgSrc={`${BACKEND_URL}/media/${edge.node.cover}`}
                             date={edge.node.humanDate}
                             vkLink={edge.node.vkLink}
                             iTunesLink={edge.node.appleMusicLink}

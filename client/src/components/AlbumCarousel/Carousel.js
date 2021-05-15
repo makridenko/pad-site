@@ -15,6 +15,7 @@ import { MobileAlbumCover } from './MobileAlbumCover';
 
 /* Settings */
 import { device } from '../../settings/css-devices';
+import { BACKEND_URL } from '../../global_settings';
 
 /* Styled Components */
 const StyledCarousel = styled.div`
@@ -85,14 +86,14 @@ export const Carousel = () => (
                             {props.releases.edges.map(edge => <AlbumCover
                                 key={edge.node.id}
                                 albumId={edge.node.id}
-                                src={`http://localhost:8000/media/${edge.node.cover}`}
+                                src={`${BACKEND_URL}/media/${edge.node.cover}`}
                             />)}
                         </StyledCarousel>
                         <StyledMobileCarousel>
                             {props.releases.edges.map(edge => <MobileAlbumCover 
                                 key={edge.node.id}
                                 albumId={edge.node.id}
-                                src={`http://localhost:8000/media/${edge.node.cover}`}
+                                src={`${BACKEND_URL}/media/${edge.node.cover}`}
                             />)}
                         </StyledMobileCarousel>
                     </Fragment>

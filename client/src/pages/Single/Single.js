@@ -12,7 +12,10 @@ import styled from 'styled-components';
 /* Components */
 import ReleaseHeader from '../../components/ReleaseHeader';
 import Lyrics from '../../components/Lyrics';
+
+/* Settings */
 import { device } from '../../settings/css-devices';
+import { BACKEND_URL } from '../../global_settings';
 
 /* Styled Components */
 const StyledSingle = styled.div`
@@ -90,7 +93,7 @@ const Single = (props) => {
                 return (
                     <StyledSingle>
                         <ReleaseHeader 
-                            releasePhotoSrc={`http://localhost:8000/media/${props.release?.cover}`}
+                            releasePhotoSrc={`${BACKEND_URL}/media/${props.release?.cover}`}
                             releaseTitle={props.release?.title}
                             date={props.release?.humanDate}
                             labelTitle={props.release?.label}

@@ -14,6 +14,7 @@ import OneMember from './OneMember';
 
 /* Settings */
 import { device } from '../../settings/css-devices';
+import { BACKEND_URL } from '../../global_settings';
 
 /* UI-Kit */
 import { TitleH1 } from '../../ui-kit/typography';
@@ -92,7 +93,7 @@ query MembersQuery {
 }
 `;
 
-const bandPhoto = 'http://localhost:8000/media/settings/band_photo_bio.png';
+const bandPhoto = `${BACKEND_URL}/media/settings/band_photo_bio.png`;
 
 const Members = () => (
     <StyledMembers>

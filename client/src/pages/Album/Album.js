@@ -17,6 +17,7 @@ import MobileTracklist from '../../components/MobileTracklist';
 
 /* Settings */
 import { device } from '../../settings/css-devices';
+import { BACKEND_URL } from '../../global_settings';
 
 /* Styled Components */
 const StyledAlbum = styled.div`
@@ -93,7 +94,7 @@ const Album = (props) => {
             if (props) return (
                 <StyledAlbum>
                     <ReleaseHeader
-                        releasePhotoSrc={`http://localhost:8000/media/${props.release?.cover}`}
+                        releasePhotoSrc={`${BACKEND_URL}/media/${props.release?.cover}`}
                         releaseTitle={props.release?.title}
                         date={props.release?.humanDate}
                         labelTitle={props.release?.label}
