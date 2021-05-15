@@ -1,5 +1,10 @@
 /* React */
-import React from 'react';
+import React, { Fragment, useState } from 'react';
+
+/* Relay */
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import environment from '../../environment';
 
 /* Styles */
 import styled from 'styled-components';
@@ -12,6 +17,7 @@ import MobileTracklist from '../../components/MobileTracklist';
 
 /* Settings */
 import { device } from '../../settings/css-devices';
+import { BACKEND_URL } from '../../global_settings';
 
 /* Styled Components */
 const StyledAlbum = styled.div`
@@ -32,88 +38,92 @@ const AlbumContentContainer = styled.div`
 `;
 
 const MobileTracklistContainer = styled.div`
-    display: flex;
     margin-top: 48px;
 
     @media ${device.desktop}, ${device.desktopS} {
         display: none;
     }
+
+    @media ${device.mobile} {
+        display: flex;
+    }
 `;
 
-// Fake data
-const text = `Порой зеленых чистых листьев,
-Где до рассвета стелется туман,
-Закаты теплые так близко,
-Моих фантазий красочный фонтан.
-
-В эту пору почувствуешь дыханье,
-Дыханье ветра - с ним не совладать.
-Поля цветов, исполнятся желанья,
-Не нужно так страдать.
-
-Дорога стелется во мраке,
-Кругом разлуки, суета и драки,
-Осень вернет уныние и слякоть,
-Но летом нельзя плакать.
-
-Ходить быстрее, верить так уперто,
-Что просто цели выльются в мечты.
-Даром не нужно - посылаю к черту,
-Не видя красоты.
-
-Порой зеленых чистых листьев,
-Где до рассвета стелется туман,
-К закатам теплым прикоснись ты,
-На зиму положи в карман.
-
-Дорога стелется во мраке,
-Кругом разлуки, суета и драки,
-Осень вернет уныние и слякоть,
-Но летом нельзя плакать.
+/* Query */
+const AlbumQuery = graphql`
+query AlbumQuery($albumID: ID!) {
+    release(id: $albumID) {
+        cover
+        title
+        humanDate
+        label
+        vkLink
+        appleMusicLink
+        spotifyLink
+        youtubeLink
+        deezerLink
+        yandexMusicLink
+        songSet {
+            edges {
+                node {
+                    id
+                    title
+                }
+            }
+        }
+    }
+}
 `;
 
-const data = [
-    {title: 'Летом нельзя плакать', active: true},
-    {title: '31 августа'},
-    {title: 'Волны и бури'},
-    {title: 'Экологическая песня'},
-    {title: 'Теплый стан'},
-    {title: 'Плечом к плечу'},
-    {title: 'Последние блинки128 тепла'},
-    {title: 'Дорога в лес'},
-    {title: 'Спутник'},
-    {title: '11.12.87'},
-    {title: 'Прощальный вальс'},
-]
+const Album = (props) => {
+    // Get album id from url
+    let albumID = props.match.params.albumId;
 
-const Album = () => (
-    <StyledAlbum>
-        <ReleaseHeader 
-            releasePhotoSrc={'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'}
-            releaseTitle={'фото и напитки'}
-            date={'13 сентября 2020'}
-            labelTitle={'Fuzz and Friendship'}
-            vkLink={'https://vk.com/'}
-            iTunesLink={'https://vk.com/'}
-            spotifyLink={'https://vk.com/'}
-            youtubeLink={'https://youtube.com/'}
-            dezeerLink={'https://vk.com/'}
-            yandexLink={'https://yandex.com/'}
-        />
-        <AlbumContentContainer>
-            <TrackList 
-                songs={data}
-            />
-            <Lyrics
-                text={text}
-            />
-        </AlbumContentContainer>
-        <MobileTracklistContainer>
-            <MobileTracklist
-                songs={data}
-            />
-        </MobileTracklistContainer>     
-    </StyledAlbum>
-);
+    // Hook for change song id lyric
+    const [currentSongId, setCurrentSongId] = useState(null);
+
+    return <QueryRenderer
+        environment={environment}
+        query={AlbumQuery}
+        variables={{
+            albumID: albumID,
+        }}
+        render={({error, props}) => {
+            if (error) return <div>Упс! Ошибка</div>;
+            if (!props) return <Fragment />;
+            if (props) return (
+                <StyledAlbum>
+                    <ReleaseHeader
+                        releasePhotoSrc={`${BACKEND_URL}/media/${props.release?.cover}`}
+                        releaseTitle={props.release?.title}
+                        date={props.release?.humanDate}
+                        labelTitle={props.release?.label}
+                        vkLink={props.release?.vkLink}
+                        appleMusicLink={props.release?.appleMusicLink}
+                        spotifyLink={props.release?.spotifyLink}
+                        youtubeLink={props.release?.youtubeLink}
+                        deezerLink={props.release?.deezerLink}
+                        yandexLink={props.release?.yandexLink}
+                    />
+                    <AlbumContentContainer>
+                        <TrackList
+                            songs={props.release?.songSet}
+                            currentSongId={currentSongId}
+                            setCurrentSongId={setCurrentSongId}
+                        />
+                        <Lyrics
+                            currentSongId={currentSongId}
+                        />
+                    </AlbumContentContainer>
+                    <MobileTracklistContainer>
+                        <MobileTracklist
+                            songs={props.release?.songSet}
+                        />
+                    </MobileTracklistContainer>
+                </StyledAlbum>
+            );
+        }}
+    />;
+}
 
 export default Album;

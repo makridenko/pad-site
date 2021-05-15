@@ -1,5 +1,10 @@
 /* React */
-import React from 'react';
+import React, { Fragment } from 'react';
+
+/* Relay */
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import environment from '../../environment';
 
 /* Styles */
 import styled from 'styled-components';
@@ -7,7 +12,10 @@ import styled from 'styled-components';
 /* Components */
 import ReleaseHeader from '../../components/ReleaseHeader';
 import Lyrics from '../../components/Lyrics';
+
+/* Settings */
 import { device } from '../../settings/css-devices';
+import { BACKEND_URL } from '../../global_settings';
 
 /* Styled Components */
 const StyledSingle = styled.div`
@@ -38,61 +46,76 @@ const FakeContainer = styled.div`
     }
 `;
 
-// Fake data
-const text = `
-Порой зеленых чистых листьев,
-Где до рассвета стелется туман,
-Закаты теплые так близко,
-Моих фантазий красочный фонтан.
-
-В эту пору почувствуешь дыханье,
-Дыханье ветра - с ним не совладать.
-Поля цветов, исполнятся желанья,
-Не нужно так страдать.
-
-Дорога стелется во мраке,
-Кругом разлуки, суета и драки,
-Осень вернет уныние и слякоть,
-Но летом нельзя плакать.
-
-Ходить быстрее, верить так уперто,
-Что просто цели выльются в мечты.
-Даром не нужно - посылаю к черту,
-Не видя красоты.
-
-Порой зеленых чистых листьев,
-Где до рассвета стелется туман,
-К закатам теплым прикоснись ты,
-На зиму положи в карман.
-
-Дорога стелется во мраке,
-Кругом разлуки, суета и драки,
-Осень вернет уныние и слякоть,
-Но летом нельзя плакать.
+/* Query */
+const SingleQuery = graphql`
+query SingleQuery($singleID: ID!) {
+    release(id: $singleID) {
+        cover
+        title
+        humanDate
+        label
+        vkLink
+        appleMusicLink
+        spotifyLink
+        youtubeLink
+        deezerLink
+        yandexMusicLink
+        songSet {
+            edges {
+                node {
+                    id
+                    title
+                    lyrics
+                }
+            }
+        }
+    }
+}
 `;
 
-const Single = () => (
-    <StyledSingle>
-        <ReleaseHeader 
-            releasePhotoSrc={'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'}
-            releaseTitle={'Летом нельзя плакать'}
-            date={'13 сентября 2020'}
-            labelTitle={'Fuzz and Friendship'}
-            vkLink={'https://vk.com/'}
-            iTunesLink={'https://vk.com/'}
-            spotifyLink={'https://vk.com/'}
-            youtubeLink={'https://youtube.com/'}
-            dezeerLink={'https://vk.com/'}
-            yandexLink={'https://yandex.com/'}
-        />
-        <SingleContentContainer>
-            <FakeContainer />
-            <Lyrics
-                single={true}
-                text={text}
-            />
-        </SingleContentContainer>
-    </StyledSingle>
-);
+const Single = (props) => {
+    // Get single id from url
+    const singleID = props.match.params.singleId;
+
+    return <QueryRenderer
+        environment={environment}
+        query={SingleQuery}
+        variables={{
+            singleID: singleID,
+        }}
+        render={({error, props}) => {
+            if (error) return <div>Упс! Ошибка</div>;
+            if (!props) return <Fragment />;
+            if (props) {
+                // Get single id from song set
+                const songId = props.release?.songSet.edges[0].node.id;
+
+                return (
+                    <StyledSingle>
+                        <ReleaseHeader 
+                            releasePhotoSrc={`${BACKEND_URL}/media/${props.release?.cover}`}
+                            releaseTitle={props.release?.title}
+                            date={props.release?.humanDate}
+                            labelTitle={props.release?.label}
+                            vkLink={props.release?.vkLink}
+                            appleMusicLink={props.release?.appleMusicLink}
+                            spotifyLink={props.release?.spotifyLink}
+                            youtubeLink={props.release?.youtubeLink}
+                            deezerLink={props.release?.deezerLink}
+                            yandexLink={props.release?.yandexLink}
+                        />
+                        <SingleContentContainer>
+                            <FakeContainer />
+                            <Lyrics
+                                single={true}
+                                currentSongId={songId}
+                            />
+                        </SingleContentContainer>
+                    </StyledSingle>
+            )}
+        }}
+        
+    />;
+};
 
 export default Single;

@@ -26,7 +26,7 @@ const StyledFooter = styled.footer`
     }
 
     @media ${device.desktop}, ${device.desktopS} {
-        position: ${props => props.withPhoto ? 'fixed' : 'static'};
+        position: fixed;
         bottom: 0;
     }
 

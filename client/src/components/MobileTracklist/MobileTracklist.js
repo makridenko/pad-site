@@ -26,12 +26,11 @@ const MobileTracklist = ({songs}) => (
     <StyledMobileTracklist>
         <TitleH3 text={'Треклист'} thin={true} />
         <StyledSongs>
-            {songs.map(song => (
-                <OneSong
-                    key={song.title}
-                    title={song.title}
-                />
-            ))}
+            {songs?.edges.map(edge => <OneSong
+                key={edge.node.id}
+                songId={edge.node.id}
+                title={edge.node.title}
+            />)}
         </StyledSongs>
     </StyledMobileTracklist>
 );

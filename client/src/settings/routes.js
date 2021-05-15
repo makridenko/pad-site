@@ -8,12 +8,10 @@ import AlbumPage from '../pages/Album';
 
 
 export const routes = [
-    {link: '/music', component: <Music />},
-    {link: '/about', component: <About />},
-    {link: '/shop', component: <></>},
-    {link: '/video', component: <></>},
-    {link: '/contacts', component: <Contacts />},
-    {link: '/single', component: <SinglePage />},
-    {link: '/album', component: <AlbumPage />},
-    {link: '/', component: <Main />},
+    {link: '/music', component: Music},
+    {link: '/about', component: About},
+    {link: '/contacts', component: Contacts},
+    {link: '/single/:singleId', component: SinglePage},
+    {link: '/album/:albumId', component: AlbumPage},
+    {link: '/', component: Main},
 ];

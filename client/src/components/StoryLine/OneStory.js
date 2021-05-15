@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 /* Settings */
 import { device } from '../../settings/css-devices';
+import { BACKEND_URL } from '../../global_settings';
 
 /* UI-Kit */
 import { TitleH2, Paragraph } from '../../ui-kit/typography';
@@ -53,7 +54,7 @@ const OneStory = ({year, photoSrc, text}) => (
             <TitleH2 text={year} />
         </Container>
         <Container>
-            {photoSrc ? <img src={photoSrc} alt={year} /> : <Fragment />}
+            {photoSrc ? <img src={`${BACKEND_URL}/media/${photoSrc}`} alt={year} /> : <Fragment />}
         </Container>
         <Container>
             <Paragraph text={text} />

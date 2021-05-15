@@ -1,6 +1,9 @@
 /* React */
 import React, { Fragment } from 'react';
 
+/* Router */
+import { Link } from 'react-router-dom';
+
 /* Styles */
 import styled from 'styled-components';
 
@@ -22,6 +25,10 @@ const NewReleaseContainer = styled.div`
     margin-top: 48px;
     display: flex;
     flex-direction: column;
+
+    a {
+        text-decoration: none;
+    }
 
     h1 {
         font-weight: 500;
@@ -77,6 +84,7 @@ const ButtonContainer = styled.div`
 `;
 
 const NewReleaseInfo = ({
+    releaseId,
     releaseType, 
     releaseTitle, 
     releaseDescription,
@@ -88,10 +96,12 @@ const NewReleaseInfo = ({
         {releasePhotoSrc ? <NewReleaseCover src={releasePhotoSrc} /> : <Fragment />}
         <Paragraph text={releaseDescription} />
         <ButtonContainer>
+            <Link to={releaseType === 'Альбом' ? `/album/${releaseId}` : `/single/${releaseId}`}>
             <Button
                 svg={<ArrowRight />}
                 text={'Подробнее'}
             />
+            </Link>
         </ButtonContainer>
     </NewReleaseContainer>
 );

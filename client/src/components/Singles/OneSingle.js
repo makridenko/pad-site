@@ -105,6 +105,7 @@ const ArrowContainer = styled.div`
 
 
 export const OneSingle = ({
+    id,
     imgSrc, 
     title, 
     date, 
@@ -112,11 +113,11 @@ export const OneSingle = ({
     iTunesLink,
     spotifyLink,
     youtubeLink,
-    dezeerLink,
+    deezerLink,
     yandexLink,
 }) => {
     return (
-        <Link to='/single'>
+        <Link to={`/single/${id}`}>
             <StyledOneSingle>
                 <ImageContainer>
                     <img alt={title} src={imgSrc} />
@@ -132,7 +133,7 @@ export const OneSingle = ({
                     iTunesLink={iTunesLink}
                     spotifyLink={spotifyLink}
                     youtubeLink={youtubeLink}
-                    dezeerLink={dezeerLink}
+                    dezeerLink={deezerLink}
                     yandexLink={yandexLink}
                 />
                 <ArrowContainer>

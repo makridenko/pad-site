@@ -39,19 +39,19 @@ const GridContainer = styled.div`
 
 const IconSet = ({
     vkLink,
-    iTunesLink,
+    appleMusicLink,
     spotifyLink,
     youtubeLink,
-    dezeerLink,
+    deezerLink,
     yandexLink,
 }) => (
     <StyledIconSet className='icon-set'>
         <GridContainer>
             <a href={vkLink}><VK /></a>
-            <a href={iTunesLink}><ITunes /></a>
+            <a href={appleMusicLink}><ITunes /></a>
             <a href={spotifyLink}><Spotify /></a>
             <a href={youtubeLink}><Youtube /></a>
-            <a href={dezeerLink}><Dezeer /></a>
+            <a href={deezerLink}><Dezeer /></a>
             <a href={yandexLink}><Yandex /></a>
         </GridContainer>
     </StyledIconSet>

@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 
 /* settings */
 import { device } from './css-devices';
+import { BACKEND_URL } from '../global_settings';
 
 export const GlobalStyles = createGlobalStyle`
     body {
@@ -19,5 +20,5 @@ export const defaultMode = {
 };
 
 export const photoMode = {
-    mainBackground: 'url(https://www.teahub.io/photos/full/173-1736604_american-football-band-phone.jpg)',
+    mainBackground: `url(${BACKEND_URL}/media/settings/band_photo.png)`,
 };

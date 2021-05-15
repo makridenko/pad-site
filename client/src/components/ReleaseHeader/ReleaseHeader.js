@@ -92,10 +92,10 @@ const ReleaseHeader = ({
     date, 
     labelTitle,
     vkLink,
-    iTunesLink,
+    appleMusicLink,
     spotifyLink,
     youtubeLink,
-    dezeerLink,
+    deezerLink,
     yandexLink,
 }) => (
     <StyledReleaseHeader>
@@ -119,10 +119,10 @@ const ReleaseHeader = ({
                     <Paragraph text={'Послушать'} />
                     <IconSet 
                         vkLink={vkLink}
-                        iTunesLink={iTunesLink}
+                        appleMusicLink={appleMusicLink}
                         spotifyLink={spotifyLink}
                         youtubeLink={youtubeLink}
-                        dezeerLink={dezeerLink}
+                        deezerLink={deezerLink}
                         yandexLink={yandexLink}
                     />
                 </MetaOneContainer>
