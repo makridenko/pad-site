@@ -37,6 +37,7 @@ const DescriptionContainer = styled.div`
 
 
 export const MainDesktop = ({
+    releaseId,
     isNewRelease, 
     setNewRelease, 
     bandDescription,
@@ -66,6 +67,7 @@ export const MainDesktop = ({
             />
             {isNewRelease ?
                 <NewReleaseInfo
+                    releaseId={releaseId}
                     releaseType={releaseType}
                     releaseTitle={releaseTitle}
                     releaseDescription={releaseDescription}

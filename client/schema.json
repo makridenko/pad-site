@@ -350,6 +350,18 @@
               }
             },
             {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "lastRelease",
+              "type": {
+                "kind": "OBJECT",
+                "name": "ReleaseNode",
+                "ofType": null
+              }
+            },
+            {
               "args": [
                 {
                   "defaultValue": null,

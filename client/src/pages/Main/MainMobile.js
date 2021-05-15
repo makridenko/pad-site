@@ -30,6 +30,7 @@ const DescriptionContainer = styled.div`
 
 
 export const MainMobile = ({
+    releaseId,
     isNewRelease, 
     setNewRelease, 
     bandDescription,
@@ -52,6 +53,7 @@ export const MainMobile = ({
         <HalfContainer>
             {isNewRelease ?
                 <NewReleaseInfo
+                    releaseId={releaseId}
                     releaseType={releaseType}
                     releaseTitle={releaseTitle}
                     releaseDescription={releaseDescription}

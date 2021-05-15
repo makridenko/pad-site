@@ -1,5 +1,10 @@
 /* React */
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
+
+/* Relay */
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import environment from '../../environment';
 
 /* Styles */
 import styled from 'styled-components';
@@ -29,6 +34,19 @@ const StyledMain = styled.div`
     }
 `;
 
+/* Query */
+const MainQuery = graphql`
+query MainQuery {
+    lastRelease {
+        id
+        cover
+        title
+        aboutText
+        isSingle
+    }
+}
+`;
+
 
 const Main = () => {
 
@@ -40,31 +58,44 @@ const Main = () => {
     // For toggle component MainDesktop and MainMobile
     const mobileScreen = width < 1280;
 
-    return (
-        <StyledMain>
-            {mobileScreen ?
-                <MainMobile
-                    isNewRelease={isNewRelease}
-                    setNewRelease={setNewRelease}
-                    bandDescription={'Здесь должен быть какой-то текст на пару строк, может быть на даже на три, а может и на все четыре, я хз'}
-                    releaseType={'Альбом'}
-                    releaseTitle={'фото и напитки 2020'}
-                    releaseDescription={'Описательный текст про содержание альбома описательный текст про содержание альбома описательный текст про содержание альбома описательный текст про содержание альбома  описательный текст про содержание альбома'}
-                    releasePhotoSrc={'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'}
-                />
-                :
-                <MainDesktop
-                    isNewRelease={isNewRelease}
-                    setNewRelease={setNewRelease}
-                    bandDescription={'Здесь должен быть какой-то текст на пару строк, может быть на даже на три, а может и на все четыре, я хз'}
-                    releaseType={'Альбом'}
-                    releaseTitle={'фото и напитки 2020'}
-                    releaseDescription={'Описательный текст про содержание альбома описательный текст про содержание альбома описательный текст про содержание альбома описательный текст про содержание альбома  описательный текст про содержание альбома'}
-                    releasePhotoSrc={'https://sun9-15.userapi.com/impg/c857216/v857216810/100990/KBndW950a6k.jpg?size=2160x2160&quality=96&sign=2026cfd599af1392a531791d1ad83e26&type=album'}
-                />
-            }
-        </StyledMain>
-    );
+    const bandDescriptionText = 'Здесь должен быть какой-то текст на пару строк, может быть на даже на три, а может и на все четыре, я хз'
+
+    return <QueryRenderer
+        environment={environment}
+        query={MainQuery}
+        render={({error, props}) => {
+            if (error) return <div>Упс! Ошибка</div>;
+            if (!props) return <Fragment />;
+            if (props) return (
+                <StyledMain>
+                    {mobileScreen ?
+                        <MainMobile
+                            releaseId={props.lastRelease.id}
+                            isNewRelease={isNewRelease}
+                            setNewRelease={setNewRelease}
+                            bandDescription={bandDescriptionText}
+                            releaseType={props.lastRelease.isSingle ? 'Сингл' : 'Альбом'}
+                            releaseTitle={props.lastRelease.title}
+                            releaseDescription={props.lastRelease.aboutText}
+                            releasePhotoSrc={`http://localhost:8000/media/${props.lastRelease.cover}`}
+                        />
+                        :
+                        <MainDesktop
+                            releaseId={props.lastRelease.id}
+                            isNewRelease={isNewRelease}
+                            setNewRelease={setNewRelease}
+                            bandDescription={bandDescriptionText}
+                            releaseType={props.lastRelease.isSingle ? 'Сингл' : 'Альбом'}
+                            releaseTitle={props.lastRelease.title}
+                            releaseDescription={props.lastRelease.aboutText}
+                            releasePhotoSrc={`http://localhost:8000/media/${props.lastRelease.cover}`}
+                        />
+                    }
+                </StyledMain>
+            );
+        }}
+        
+    />;
 };
 
 export default Main;

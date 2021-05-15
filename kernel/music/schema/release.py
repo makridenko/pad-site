@@ -29,3 +29,9 @@ class ReleaseNode(DjangoObjectType):
 class Query(ObjectType):
     release = relay.Node.Field(ReleaseNode)
     releases = DjangoFilterConnectionField(ReleaseNode)
+
+    last_release = graphene.Field(ReleaseNode)
+
+    @staticmethod
+    def resolve_last_release(root, info, **kwargs):
+        return Release.objects.first()

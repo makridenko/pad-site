@@ -1,13 +1,13 @@
 /* React */
-import React from 'react';
-
-/* Styles */
-import styled from 'styled-components';
+import React, { Fragment } from 'react';
 
 /* Relay */
 import { QueryRenderer } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
 import environment from '../../environment';
+
+/* Styles */
+import styled from 'styled-components';
 
 /* Components */
 import ReleaseHeader from '../../components/ReleaseHeader';
@@ -82,6 +82,7 @@ const Single = (props) => {
         }}
         render={({error, props}) => {
             if (error) return <div>Упс! Ошибка</div>;
+            if (!props) return <Fragment />;
             if (props) {
                 // Get single id from song set
                 const songId = props.release.songSet.edges[0].node.id;
