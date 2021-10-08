@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'members',
     'utils',
     'site_settings',
+    'video',
 ]
 
 MIDDLEWARE = [

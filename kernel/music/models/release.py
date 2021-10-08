@@ -36,13 +36,13 @@ class Release(models.Model):
         verbose_name_plural = 'Релизы'
         ordering = ('-release_date',)
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.is_single:
             return f'{self.title} - Single'
         return self.title
 
     @property
-    def human_date(self):
+    def human_date(self) -> str:
         """ Returns human date in format 'day(int) month(str) year(int)' """
         month = MONTH_TITLES[self.release_date.month]
         return f'{self.release_date.day} {month} {self.release_date.year}'
