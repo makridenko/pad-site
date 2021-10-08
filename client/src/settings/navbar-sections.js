@@ -3,5 +3,5 @@ export const sections = [
     {link: '/about', title: 'О группе'},
     {link: '/video', title: 'Видео'},
     {link: '/contacts', title: 'Контакты'},
-    {link: '/shop', title: 'Мерч'},
+    // {link: '/shop', title: 'Мерч'},
 ];
